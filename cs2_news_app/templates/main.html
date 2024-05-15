@@ -5,11 +5,11 @@
 	<title>main page</title>
 	<meta charset="utf-8">
 
-
+	<script src="https://cdn.tailwindcss.com"></script>
 	
 	{% load static %}
-	<link rel="stylesheet" type="text/css" href="{% static 'css/component/all_news_button.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/component/top_news_carousel.css' %}">
+	
+	
 	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">   
 	<link rel="stylesheet" type="text/css" href="{% static 'css/component/whole_page.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/component/change_button.css' %}">
@@ -17,20 +17,23 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'css/component/flex_center_box.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/component/layer_block.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/component/card.css' %}">
-	
+	<link rel="stylesheet" type="text/css" href="{% static 'css/component/back-to-top.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/component/carousel.css' %}">
+
     
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
 
+
 </head>
 
 <body>
-
-    <div id="topCarousel" class="carousel slide" data-ride="carousel">
+	<!-- 顶部广告 -->
+    <div id="topCarousel" class="carousel slide top-carousel" data-ride="carousel">
         <!-- Indicators -->
         <ul class="carousel-indicators">
             <li data-target="#topCarousel" data-slide-to="0" class="active"></li>
@@ -42,7 +45,7 @@
         <!-- The slideshow -->
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <a href="main.html#nav_block">
+                <a href="#">
                     <video class="d-block w-100" autoplay muted loop>
                         <source src="https://img.csgo.com.cn/csgostatic/csgo/610a5be3-7b00-4b3a-ae5e-09616afef48e.webm" type="video/webm">
                         Your browser does not support the video tag.
@@ -92,31 +95,15 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
-	<!-- 回到顶部按钮 -->
-	<button id="back-to-top">
-		<i class="fas fa-arrow-up"></i>
-	</button>
-	<script>
-		// 当用户滚动时，显示或隐藏回到顶部按钮
-		window.addEventListener("scroll", function () {
-			var backToTopButton = document.getElementById("back-to-top");
-			if (window.pageYOffset > 100) { // 当滚动距离大于100像素时显示按钮
-				backToTopButton.style.display = "block";
-			} else {
-				backToTopButton.style.display = "none";
-			}
-		});
 
-		// 当用户点击回到顶部按钮时，滚动到页面顶部
-		function scrollToTop() {
-			window.scrollTo({
-				top: 0,
-				behavior: "smooth"
-			});
-		}
-		// 绑定点击事件到回到顶部按钮
-		document.getElementById("back-to-top").addEventListener("click", scrollToTop);
-	</script>
+
+	<!-- 回到顶部按钮 -->
+    <button id="back-to-top" class="back-to-top-btn bg-gray-800 text-white p-2 rounded-full fixed bottom-4 right-4 transition-colors duration-300">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    <script src="{% static 'js/back-to-top-btn.js' %}" type="text/javascript"></script>
+
+
 
 
 	<!-- 导航栏 -->
@@ -344,151 +331,208 @@
 
 			</div>
 
-			<div id="draw-border">
-				<a href="{% url 'all_news' %}">
-					<button>全部新闻</button>
+			<div class="flex items-center justify-center">
+				<a href="{% url 'all_news' %}" class="bg-gray-800 text-white font-semibold py-2 px-4 text-sm rounded transition duration-300 ease-in-out hover:bg-orange-600 no-underline">
+					全部新闻
 				</a>
 			</div>
+			
 		</div>
 	</div>
 
+	<!-- 比赛部分 -->
+	<div class="relative mx-auto" style="max-width: 85%; box-shadow: 0 4px 6px rgba(228, 135, 23, 0.8); background-color: rgb(228, 135, 23);">
 
-	<!--team player-->>
-	<div id="choose_blocks" class="block flex_center_box_row">
-		<div class="choose_block flex_center_box half_box">
-			<div class="block_title extra_add_padding">
-				<h1>选手排名</h1>
+		<div id="matchCarousel" class="carousel slide match-carousel relative mx-auto" data-ride="carousel" data-interval="false">
+			
+			<!-- Indicators/dots -->
+			<ul class="carousel-indicators">
+				{% for group in grouped_matches %}
+				<li data-target="#matchCarousel" data-slide-to="{{ forloop.counter0 }}" {% if forloop.counter0 == initial_group_index %}class="active"{% endif %}></li>
+				{% endfor %}
+			</ul>
+	
+			<!-- The slideshow/carousel -->
+			<div class="carousel-inner">
+				{% for group in grouped_matches %}
+				<div class="carousel-item {% if forloop.counter0 == initial_group_index %}active{% endif %}">
+					<div class="d-flex justify-around flex-wrap">
+						{% for match in group %}
+						<div class="bg-white rounded-lg p-4 shadow-lg match-block">
+							<div class="text-center text-lg font-semibold mb-2">{{ match.match_name_big }}</div>
+							<div class="text-center text-sm text-gray-500 mb-2">{{ match.match_name_small }}</div>
+							<div class="text-center text-sm text-gray-500 mb-4">{{ match.time|date:"m-d H:i" }}</div>
+							<div class="flex items-center justify-center space-x-4 mb-2">
+								<div class="text-center">
+									<img src="{{ match.team1.images.first.image.url }}" alt="{{ match.team1.name }} logo" class="w-12 h-12 rounded-full shadow-md mb-1">
+									<div class="text-sm font-medium">{{ match.team1.name }}</div>
+								</div>
+								{% if match.state == '已结束' %}
+									<div class="text-xl font-bold">{{ match.score_1 }} : {{ match.score_2 }}</div>
+								{% else %}
+									<div class="text-3xl font-bold">VS</div>
+								{% endif %}
+								<div class="text-center">
+									<img src="{{ match.team2.images.first.image.url }}" alt="{{ match.team2.name }} logo" class="w-12 h-12 rounded-full shadow-md mb-1">
+									<div class="text-sm font-medium">{{ match.team2.name }}</div>
+								</div>
+							</div>
+							<div class="flex items-center justify-center">
+								<a href="{{ match.link }}" class="bg-gray-800 text-white font-semibold py-2 px-4 text-sm rounded transition duration-300 ease-in-out hover:bg-orange-600 no-underline">
+									回放
+								</a>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+				{% endfor %}
 			</div>
-			<div class="mg"></div>
-			<!-- Example players, replace with actual data -->
-			<div class="ranking_title">
-				<div style="text-align: left;">近3个月rating</div>
-			</div>
-			<div class="ranking_item" onclick="redirect(1)">
-				<img src="../static/images/advent.webp" style="width: 40px;">
-				<div style="text-align: left;">1.advent </div>
-				<div style="right: 0;position: relative;">2.59</div>
-			</div>
-			<div class="ranking_item" onclick="redirect(2)">
-				<img src="../static/images/advent.webp" style="width: 40px;">
-				<div style="text-align: left;">2.advent </div>
-				<div style="right: 0;position: relative;">2.59</div>
-			</div>
-			<div class="ranking_item" onclick="redirect(3)">
-				<img src="../static/images/advent.webp" style="width: 40px;">
-				<div style="text-align: left;">3.advent </div>
-				<div style="right: 0;position: relative;">2.59</div>
-			</div>
-			<div class="ranking_item" onclick="redirect(4)">
-				<img src="../static/images/advent.webp" style="width: 40px;">
-				<div style="text-align: left;">4.advent </div>
-				<div style="right: 0;position: relative;">2.59</div>
-			</div>
-			<div class="ranking_item" onclick="redirect(5)">
-				<img src="../static/images/advent.webp" style="width: 40px;">
-				<div style="text-align: left;">5.advent </div>
-				<div style="right: 0;position: relative;">2.59</div>
-			</div>
-			<div class="ranking_item" onclick="redirect(6)">
-				<img src="../static/images/advent.webp" style="width: 40px;">
-				<div style="text-align: left;">6.advent </div>
-				<div style="right: 0;position: relative;">2.59</div>
-			</div>
-			<div class="ranking_item" onclick="redirect(7)">
-				<img src="../static/images/advent.webp" style="width: 40px;">
-				<div style="text-align: left;">7.advent </div>
-				<div style="right: 0;position: relative;">2.59</div>
-			</div>
-			<div class="ranking_item" onclick="redirect(8)">
-				<img src="../static/images/advent.webp" style="width: 40px;">
-				<div style="text-align: left;">8.advent </div>
-				<div style="right: 0;position: relative;">2.59</div>
-			</div>
-			<div class="ranking_item" onclick="redirect(9)">
-				<img src="../static/images/advent.webp" style="width: 40px;">
-				<div style="text-align: left;">9.advent </div>
-				<div style="right: 0;position: relative;">2.59</div>
-			</div>
-			<div class="ranking_item" onclick="redirect(10)">
-				<img src="../static/images/zywoo.webp" style="width: 40px;">
-				<div style="text-align: left;">10.Zywoo </div>
-				<div style="right: 0;position: relative;">1.8</div>
-			</div>
+	
+		</div>
+	
+		<!-- Left and right controls -->
+		<a class="carousel-control-prev" href="#matchCarousel" role="button" data-slide="prev" style="width: 5%; left: 15px;">
+			<span class="carousel-control-prev-icon" aria-hidden="true" style="width: 50px; height: 50px; background-color: rgb(228, 135, 23);"></span>
+		</a>
+		<a class="carousel-control-next" href="#matchCarousel" role="button" data-slide="next" style="width: 5%; right: 15px;">
+			<span class="carousel-control-next-icon" aria-hidden="true" style="width: 50px; height: 50px; background-color: rgb(228, 135, 23);"></span>
+		</a>
 		
-			<!-- Add more players up to 10 -->
-			<a href="#" id="full_player_rankings"
-				class="show_full_rank">查看完整排行</a>
-		</div>
-
-
-
-
-		<div class="choose_block flex_center_box half_box">
-			<div class="block_title extra_add_padding">
-				<h1>队伍排名</h1>
-			</div>
-			<div class="mg"></div>
-			<!-- Example players, replace with actual data -->
-			<div class="ranking_title">
-				<div style="text-align: left;">HLTV积分</div>
-			</div>
-			<div class="ranking_item" onclick="redirect(1)">
-				<img src="../static/images/tyloo.svg" style="width: 40px;">
-				<div style="text-align: left;">1.Tyloo </div>
-				<div style="right: 0;position: relative;">2.59</div>
-			</div>
-			<div class="ranking_item" onclick="redirect(2)">
-				<img src="../static/images/tyloo.svg" style="width: 40px;">
-				<div style="text-align: left;">2.Tyloo </div>
-				<div style="right: 0;position: relative;">2.59</div>
-			</div>
-			<div class="ranking_item" onclick="redirect(3)">
-				<img src="../static/images/tyloo.svg" style="width: 40px;">
-				<div style="text-align: left;">3.Tyloo </div>
-				<div style="right: 0;position: relative;">2.59</div>
-			</div>
-			<div class="ranking_item" onclick="redirect(4)">
-				<img src="../static/images/tyloo.svg" style="width: 40px;">
-				<div style="text-align: left;">4.Tyloo </div>
-				<div style="right: 0;position: relative;">2.59</div>
-			</div>
-			<div class="ranking_item" onclick="redirect(5)">
-				<img src="../static/images/tyloo.svg" style="width: 40px;">
-				<div style="text-align: left;">5.Tyloo </div>
-				<div style="right: 0;position: relative;">2.59</div>
-			</div>
-			<div class="ranking_item" onclick="redirect(6)">
-				<img src="../static/images/tyloo.svg" style="width: 40px;">
-				<div style="text-align: left;">6.Tyloo </div>
-				<div style="right: 0;position: relative;">2.59</div>
-			</div>
-			<div class="ranking_item" onclick="redirect(7)">
-				<img src="../static/images/tyloo.svg" style="width: 40px;">
-				<div style="text-align: left;">7.Tyloo </div>
-				<div style="right: 0;position: relative;">2.59</div>
-			</div>
-			<div class="ranking_item" onclick="redirect(8)">
-				<img src="../static/images/tyloo.svg" style="width: 40px;">
-				<div style="text-align: left;">8.Tyloo </div>
-				<div style="right: 0;position: relative;">2.59</div>
-			</div>
-			<div class="ranking_item" onclick="redirect(9)">
-				<img src="../static/images/tyloo.svg" style="width: 40px;">
-				<div style="text-align: left;">9.Tyloo </div>
-				<div style="right: 0;position: relative;">2.59</div>
-			</div>
-			<div class="ranking_item" onclick="redirect(10)">
-				<img src="../static/images/tyloo.svg" style="width: 40px;">
-				<div style="text-align: left;">10.Tyloo </div>
-				<div style="right: 0;position: relative;">1.8</div>
-			</div>
-			<!-- Add more players up to 10 -->
-			<a href="#" id="full_player_rankings"
-				class="show_full_rank">查看完整排行</a>
-
-		</div>
 	</div>
-	<script src="{% static 'js/player_team_mainpage.js' %}" type="text/javascript"></script>
+
+
+    <!--队伍和选手-->
+	<style>
+        /* 额外的自定义CSS */
+        #choose_blocks {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;  /* 增加子元素间距 */
+        }
+
+        .choose_block {
+            flex: 1 1 100%;  /* 默认情况下占据100%的宽度 */
+            max-width: 100%; /* 确保最大宽度为100% */
+        }
+
+        @media (min-width: 768px) {
+            .choose_block {
+                flex: 1 1 48%;  /* 在中等屏幕及以上时，子元素占据48%的宽度 */
+                max-width: 48%;
+            }
+        }
+    </style>
+    <div id="choose_blocks" class="flex flex-wrap justify-center space-x-4">
+        <div class="choose_block flex_center_box half_box w-full md:w-1/2">
+            <div class="block_title extra_add_padding">
+                <h1>选手排名</h1>
+            </div>
+            <div class="mg"></div>
+            <!-- Example players, replace with actual data -->
+            <div class="ranking_title">
+                <div style="text-align: left;">近3个月rating</div>
+            </div>
+            <div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect(1)">
+                <img src="../static/images/advent.webp" style="width: 40px;">
+                <div style="text-align: left;">1.advent</div>
+                <div style="position: relative;">2.59</div>
+            </div>
+            <div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect(2)">
+                <img src="../static/images/advent.webp" style="width: 40px;">
+                <div style="text-align: left;">2.advent</div>
+                <div style="position: relative;">2.59</div>
+            </div>
+			<div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect(2)">
+                <img src="../static/images/advent.webp" style="width: 40px;">
+                <div style="text-align: left;">2.advent</div>
+                <div style="position: relative;">2.59</div>
+            </div>
+			<div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect(2)">
+                <img src="../static/images/advent.webp" style="width: 40px;">
+                <div style="text-align: left;">2.advent</div>
+                <div style="position: relative;">2.59</div>
+            </div>
+			<div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect(2)">
+                <img src="../static/images/advent.webp" style="width: 40px;">
+                <div style="text-align: left;">2.advent</div>
+                <div style="position: relative;">2.59</div>
+            </div>
+			<div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect(2)">
+                <img src="../static/images/advent.webp" style="width: 40px;">
+                <div style="text-align: left;">2.advent</div>
+                <div style="position: relative;">2.59</div>
+            </div>
+			<div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect(2)">
+                <img src="../static/images/advent.webp" style="width: 40px;">
+                <div style="text-align: left;">2.advent</div>
+                <div style="position: relative;">2.59</div>
+            </div>
+			<div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect(2)">
+                <img src="../static/images/advent.webp" style="width: 40px;">
+                <div style="text-align: left;">2.advent</div>
+                <div style="position: relative;">2.59</div>
+            </div>
+            <!-- Add more ranking items as needed -->
+            <a href="#" id="full_player_rankings" class="show_full_rank">查看完整排行</a>
+        </div>
+
+        <div class="choose_block flex_center_box half_box w-full md:w-1/2">
+            <div class="block_title extra_add_padding">
+                <h1>队伍排名</h1>
+            </div>
+            <div class="mg"></div>
+            <!-- Example teams, replace with actual data -->
+            <div class="ranking_title">
+                <div style="text-align: left;">HLTV积分</div>
+            </div>
+            <div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect(1)">
+                <img src="../static/images/tyloo.svg" style="width: 40px;">
+                <div style="text-align: left;">1.Tyloo</div>
+                <div style="position: relative;">2.59</div>
+            </div>
+            <div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect(2)">
+                <img src="../static/images/tyloo.svg" style="width: 40px;">
+                <div style="text-align: left;">2.Tyloo</div>
+                <div style="position: relative;">2.59</div>
+            </div>
+			<div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect(1)">
+                <img src="../static/images/tyloo.svg" style="width: 40px;">
+                <div style="text-align: left;">1.Tyloo</div>
+                <div style="position: relative;">2.59</div>
+            </div>
+			<div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect(1)">
+                <img src="../static/images/tyloo.svg" style="width: 40px;">
+                <div style="text-align: left;">1.Tyloo</div>
+                <div style="position: relative;">2.59</div>
+            </div>
+			<div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect(1)">
+                <img src="../static/images/tyloo.svg" style="width: 40px;">
+                <div style="text-align: left;">1.Tyloo</div>
+                <div style="position: relative;">2.59</div>
+            </div>
+			<div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect(1)">
+                <img src="../static/images/tyloo.svg" style="width: 40px;">
+                <div style="text-align: left;">1.Tyloo</div>
+                <div style="position: relative;">2.59</div>
+            </div>
+			<div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect(1)">
+                <img src="../static/images/tyloo.svg" style="width: 40px;">
+                <div style="text-align: left;">1.Tyloo</div>
+                <div style="position: relative;">2.59</div>
+            </div>
+			<div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect(1)">
+                <img src="../static/images/tyloo.svg" style="width: 40px;">
+                <div style="text-align: left;">1.Tyloo</div>
+                <div style="position: relative;">2.59</div>
+            </div>
+            <!-- Add more ranking items as needed -->
+            <a href="#" id="full_team_rankings" class="show_full_rank">查看完整排行</a>
+        </div>
+    </div>
+    <script src="{% static 'js/player_team_mainpage.js' %}" type="text/javascript"></script>
+
 
 
 	<div id="bottom_block" class="block flex_center_box_v">
