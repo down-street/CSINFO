@@ -1,0 +1,58 @@
+#draw-border {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto; /* 保持内容高度 */
+    padding: 10px; /* 维持适当的内边距 */
+}
+
+button {
+    border: 0;
+    background: none;
+    text-transform: uppercase;
+    color: #4361ee;
+    font-weight: bold;
+    font-size: 20px; /* 增加字体大小 */
+    position: relative;
+    outline: none;
+    padding: 10px 20px; /* 增加内边距以增大按钮 */
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: all 0.3s ease; /* 平滑过渡动画 */
+}
+
+button::before, button::after {
+    box-sizing: inherit;
+    position: absolute;
+    content: '';
+    border: 3px solid transparent; /* 增加边框粗细 */
+    width: 0;
+    height: 0;
+}
+
+button::after {
+    bottom: 0;
+    right: 0;
+}
+
+button::before {
+    top: 0;
+    left: 0;
+}
+
+button:hover::before, button:hover::after {
+    width: 100%;
+    height: 100%;
+}
+
+button:hover::before {
+    border-top-color: #4361ee;
+    border-right-color: #4361ee;
+    transition: width 0.3s ease-out, height 0.3s ease-out 0.3s;
+}
+
+button:hover::after {
+    border-bottom-color: #4361ee;
+    border-left-color: #4361ee;
+    transition: border-color 0s ease-out 0.6s, width 0.3s ease-out 0.6s, height 0.3s ease-out 1s;
+}

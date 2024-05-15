@@ -1,0 +1,9 @@
+.carousel-item {
+    height: 93vh; /* 视口高度的30% */
+}
+
+.carousel-item img,
+.carousel-item video {
+    height: 100%; /* 图片或视频填满轮播项 */
+    object-fit: cover; /* 覆盖满整个区域，可能会裁切内容 */
+}
