@@ -22,7 +22,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
+    path('', include('cs2_news_app.urls')),  # 包括 cs2_news_app 的 URLs
     # 其他 URL 包含
 ]
 
