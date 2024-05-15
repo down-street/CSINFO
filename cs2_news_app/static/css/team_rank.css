@@ -1,0 +1,70 @@
+.ranking-container {
+    width: 50%;
+    margin: auto;
+}
+
+.team {
+    background-color: white;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+}
+
+.rank {
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.team-logo img {
+    width: 40px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.team-name {
+    font-size: 18px;
+    font-weight: bold;
+    flex: 1;
+}
+
+.team-points {
+    font-size: 14px;
+    color: gray;
+    margin-right: 20px;
+}
+
+.players {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    text-align: center;
+}
+
+.player {
+    
+    text-align: center;
+    margin-right: 10px;
+}
+
+.player img {
+    width: 40px;
+    height: auto;
+    border-radius: 50%;
+}
+
+.player span {
+    display: block;
+    font-size: 12px;
+    margin-top: 5px;
+}
+.team-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}

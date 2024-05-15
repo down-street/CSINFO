@@ -72,3 +72,7 @@ def all_news(request):
     return render(request, 'all_news.html', {'all_news': all_news, 'dates': dates})
 
 
+def player_ranking(request):
+    return render(request, 'player_ranking.html')
+def team_ranking(request):
+    return render(request, 'team_ranking.html')
