@@ -13,7 +13,9 @@ class Player(models.Model):
     full_name = models.CharField(max_length=100, blank=True)
     ranking = models.IntegerField(blank=True, null=True)
     description = models.TextField(blank=True)
+    rating = models.FloatField(blank=True,null=True)
     team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='players')
+    nationality = models.CharField(max_length=20,null=True)
 
 class News(models.Model):
     id = models.AutoField(primary_key=True)

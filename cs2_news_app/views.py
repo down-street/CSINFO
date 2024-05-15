@@ -11,7 +11,7 @@ from django.shortcuts import render
 from .models import News, Match
 
 from django.shortcuts import render
-from .models import News, Match
+from .models import News, Match,Team,Player
 
 def index(request):
     # Assuming you want to fetch news with IDs from 1 to 6
@@ -29,8 +29,8 @@ def index(request):
     grouped_matches = [matches[i:i + 3] for i in range(0, len(matches), 3)]
 
     # Combine news dictionary with other context
-    context = {**news_dict, 'grouped_matches': grouped_matches, 'initial_group_index': initial_group_index}
-    
+    player=Player.objects.order_by('-rating')[:10]
+    context = {**news_dict, 'grouped_matches': grouped_matches, 'initial_group_index': initial_group_index,'player':player}
     return render(request, 'main.html', context)
 
 
@@ -102,3 +102,11 @@ def team_ranking(request):
         'news_4': news_4
         }  
     )
+
+def team_detail(request, team_id):
+    team = get_object_or_404(Team, id=team_id)
+    player = Team.objects.get(team=team.name)
+    return render(request, 'team_detail.html', {
+        'team': team,
+        'player':player
+    })
