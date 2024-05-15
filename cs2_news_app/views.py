@@ -1,25 +1,39 @@
 # cs2_news_app/views.py
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import redirect
+from datetime import datetime
+from django.utils import timezone
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from .models import News, Player, Team, Image
+from .models import News, Player, Team, Image,Match
+
+from django.shortcuts import render
+from .models import News, Match
+
+from django.shortcuts import render
+from .models import News, Match
 
 def index(request):
-    # 假设您想在不同块分别显示ID为1, 2, 3的新闻
-    news_1 = News.objects.filter(id=1).first()
-    news_2 = News.objects.filter(id=2).first()
-    news_3 = News.objects.filter(id=3).first()
-    news_4 = News.objects.filter(id=4).first()
+    # Assuming you want to fetch news with IDs from 1 to 6
+    news_ids = range(1, 7)  # Adjust numbers as necessary
+    news_items = News.objects.filter(id__in=news_ids)
+    news_dict = {f'news_{news.id}': news for news in news_items}
 
-    return render(request, 'main.html', 
-        {    
-        'news_1': news_1,
-        'news_2': news_2,
-        'news_3': news_3,
-        'news_4': news_4
-        }  
-    )
+    matches = list(Match.objects.all().order_by('time'))  # Ordering by time ascending
+    # Get the current time with timezone awareness
+    today = timezone.now()
+    # Find the index of the first match that is either today or in the future
+    initial_match_index = next((i for i, match in enumerate(matches) if match.time >= today), 0)
+    initial_group_index = initial_match_index // 4  # Calculate the group index
+    # Group matches into sets of four
+    grouped_matches = [matches[i:i + 3] for i in range(0, len(matches), 3)]
+
+    # Combine news dictionary with other context
+    context = {**news_dict, 'grouped_matches': grouped_matches, 'initial_group_index': initial_group_index}
+    
+    return render(request, 'main.html', context)
+
+
 
 
 def news_detail(request, news_id):

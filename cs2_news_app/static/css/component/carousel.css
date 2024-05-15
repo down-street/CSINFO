@@ -1,0 +1,83 @@
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-image: url('data:image/svg+xml;charset=UTF8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23ffd700" viewBox="0 0 8 8"><path d="M4.293 4L6.646 1.646a.5.5 0 1 0-.708-.708L3.5 3.293.854.646a.5.5 0 1 0-.708.708L2.793 4 .146 6.646a.5.5 0 1 0 .708.708L3.5 4.707l2.646 2.647a.5.5 0 0 0 .708-.708L4.293 4z"/></svg>');
+    background-size: 100%, 100%;
+    width: 50px;
+    height: 50px;
+}
+.top-carousel .carousel-item {
+    height: 93vh;
+    background-image: url("../../images/bg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.top-carousel .carousel-item img,
+.top-carousel .carousel-item video {
+    height: 100%;
+    object-fit: cover;
+}
+
+.top-carousel .carousel-caption h5 {
+    font-size: 45px;
+    font-weight: bold;
+    color: white;
+}
+
+.top-carousel .carousel-caption p {
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+}
+
+
+
+
+
+.match-carousel {
+    max-width: 85%;
+}
+/* 默认情况下每行显示4个 */
+.match-card {
+    flex: 1 1 22%;  /* 22%是为了确保每行有4个，加上一些间距 */
+    max-width: 22%;
+}
+
+/* 在较小的屏幕上每行显示2个 */
+@media (max-width: 768px) {
+    .match-card {
+        flex: 1 1 45%;
+        max-width: 45%;
+    }
+}
+
+/* 在更小的屏幕上每行显示1个 */
+@media (max-width: 480px) {
+    .match-card {
+        flex: 1 1 90%;
+        max-width: 90%;
+    }
+}
+
+.match-carousel .carousel-item {
+    margin-top: 8px;  /* 增加上端间隔 */
+    height: 28vh;  /* 例子中使用较短的高度 */
+    /* 其他需要的样式 */
+}
+
+.match-carousel .carousel-item img {
+    height: 100%;  /* 保持图片高度填满整个轮播项 */
+    object-fit: cover;
+}
+
+.match-carousel .carousel-indicators {
+    position: absolute;
+    bottom: 3px;  /* 可以调整位置确保与底部的距离 */
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0;
+    margin: 0;
+    list-style: none;  /* 去除默认列表样式 */
+}
+/* 可以进一步定义或覆盖其他样式 */

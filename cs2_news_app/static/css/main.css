@@ -142,37 +142,7 @@
 	background-color: #ebedf0;
 }
 
-#back-to-top {
-    display: none; /* 默认隐藏 */
-    position: fixed;
-    bottom: 30px;
-    right: 20px;
-    z-index: 99;
-    border: none;
-    outline: none;
-    background-color: #59f595;
-    color: white;
-    cursor: pointer;
-    border-radius: 50%; /* 将边框半径设置为50%以实现圆形 */
-    width: 60px; /* 设置按钮宽度 */
-    height: 60px; /* 设置按钮高度 */
-    line-height: 60px; /* 设置行高以垂直居中内容 */
-    text-align: center; /* 居中按钮内容 */
-}
 
-#back-to-top:hover {
-    background-color: #555;
-	cursor: url(https://www.csgo.com.cn/dist/images/pointer-default.png), auto;
-}
-
-/* 使用Font Awesome的向上箭头图标 */
-#back-to-top i {
-    color: white; /* 设置图标颜色为白色 */
-    font-size: 36px; /* 根据需要调整图标大小 */
-	display: inline-block;
-    vertical-align: middle;
-    line-height: normal;
-}
 .mg{
 	margin-top: 10px;
 	display: flex;

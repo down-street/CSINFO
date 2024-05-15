@@ -1,0 +1,18 @@
+
+/* 回到顶部按钮样式 */
+.back-to-top-btn {
+    background-color: #1f2937; /* bg-gray-800 */
+    color: white;
+    padding: 1rem; /* 增加按钮大小 */
+    border-radius: 9999px; /* rounded-full */
+    position: fixed;
+    bottom: 1rem; /* bottom-4 */
+    right: 1rem; /* right-4 */
+    transition: background-color 0.3s; /* transition-colors duration-300 */
+    display: none; /* 初始隐藏 */
+    font-size: 1.5rem; /* 增加图标大小 */
+}
+
+.back-to-top-btn:hover {
+    background-color: #e69e1e; /* bg-orange-600 */
+}
