@@ -21,7 +21,7 @@
 	margin: 0;
 }
 #top_block {
-	height: 750px;
+	height: 50vh;
 	background-color: white; 
 	overflow: hidden;
 }
