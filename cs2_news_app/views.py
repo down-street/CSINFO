@@ -75,4 +75,16 @@ def all_news(request):
 def player_ranking(request):
     return render(request, 'player_ranking.html')
 def team_ranking(request):
-    return render(request, 'team_ranking.html')
+        news_1 = News.objects.filter(id=1).first()
+        news_2 = News.objects.filter(id=2).first()
+        news_3 = News.objects.filter(id=3).first()
+        news_4 = News.objects.filter(id=4).first()
+
+        return render(request, 'team_ranking.html', 
+        {    
+        'news_1': news_1,
+        'news_2': news_2,
+        'news_3': news_3,
+        'news_4': news_4
+        }  
+    )
