@@ -186,6 +186,9 @@
 .full_box {
     width: 100%;
 }
+.half_box{
+    width: 50%;
+}
 .back_change_button {
     font-family: Helvetica, Tahoma, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei";
     font-size: 2em;
