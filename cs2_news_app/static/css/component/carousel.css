@@ -62,7 +62,7 @@
 
 .match-carousel .carousel-item {
     margin-top: 8px;  /* 增加上端间隔 */
-    height: 28vh;  /* 例子中使用较短的高度 */
+    height: 35vh;  /* 例子中使用较短的高度 */
     /* 其他需要的样式 */
 }
 
