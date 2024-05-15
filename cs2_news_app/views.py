@@ -2,7 +2,17 @@ from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+<<<<<<< HEAD
 from .models import News, Match
+=======
+from .models import News, Player, Team, Image,Match
+
+from django.shortcuts import render
+from .models import News, Match
+
+from django.shortcuts import render
+from .models import News, Match,Team,Player
+>>>>>>> 2c98cbda74b197238770bb1985bef4c487dfbc90
 
 def index(request):
     news_ids = range(1, 7)  # Adjust numbers as necessary
@@ -15,8 +25,14 @@ def index(request):
     initial_group_index = initial_match_index // 4
     grouped_matches = [matches[i:i + 3] for i in range(0, len(matches), 3)]
 
+<<<<<<< HEAD
     context = {**news_dict, 'grouped_matches': grouped_matches, 'initial_group_index': initial_group_index}
     
+=======
+    # Combine news dictionary with other context
+    player=Player.objects.order_by('-rating')[:10]
+    context = {**news_dict, 'grouped_matches': grouped_matches, 'initial_group_index': initial_group_index,'player':player}
+>>>>>>> 2c98cbda74b197238770bb1985bef4c487dfbc90
     return render(request, 'main.html', context)
 
 def news_detail(request, news_id):
@@ -73,6 +89,7 @@ def team_ranking(request):
 
     return render(request, 'team_ranking.html', 
         {    
+<<<<<<< HEAD
             'news_1': news_1,
             'news_2': news_2,
             'news_3': news_3,
@@ -90,3 +107,12 @@ def all_matches(request):
         'today': today
     }
     return render(request, 'all_matches.html', context)
+
+def team_detail(request, team_id):
+    team = get_object_or_404(Team, id=team_id)
+    player = Team.objects.get(team=team.name)
+    return render(request, 'team_detail.html', {
+        'team': team,
+        'player':player
+    })
+
