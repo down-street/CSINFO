@@ -1,0 +1,82 @@
+<html>
+<head>
+    <title>全部新闻</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> 
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/all_news.css' %}">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+        .news-item img {
+            height: 180px; /* 缩小图片高度 */
+            object-fit: cover; /* 保持图片比例正确 */
+            width: 100%; /* 图片宽度自适应 */
+        }
+        .news-item {
+            display: block; /* 确保链接占据整个新闻块 */
+            text-decoration: none; /* 去掉下划线 */
+            color: inherit; /* 继承文字颜色 */
+        }
+    </style>
+</head>
+<body>
+    <div class="flex min-h-screen">
+        <!-- Left side navigation -->
+        <div class="w-16 bg-blue-200 h-screen sticky top-0 flex flex-col justify-between py-5 overflow-auto">
+            <div class="text-blue-400 text-center">
+                <a href="http://127.0.0.1:8000/" class="mb-4">
+                    <i class="fas fa-home fa-lg"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="flex-1 px-20 py-10 overflow-hidden">
+            <h1 class="text-3xl font-bold underline text-center my-8">ALL NEWS</h1>
+            <div class="grid grid-cols-3 gap-8">
+                {% for news in all_news %}
+                <div class="news-block">
+                    <a href="{% url 'news_detail' news.id %}" class="news-item">
+                        <div class="background-img" style="background-image: url('{{ news.images.first.image.url }}');"></div>
+                        <div class="news-content">
+                            <h2 class="text-lg font-bold">{{ news.title }}</h2>
+                            <p class="text-sm">{{ news.date|date:"Y-m-d" }}</p>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+        
+        <!-- Right side search -->
+        <div class="w-60 bg-blue-100 h-screen sticky top-0 p-5 overflow-auto flex flex-col">
+            <div class="mb-4">
+                <h2 class="mb-20"> </h2>
+                <h2 class=" text-lg font-bold text-center mb-4">搜索新闻</h2>
+                <form action="{% url 'all_news' %}" method="get">
+                    <input type="text" name="search" placeholder="Search keywords..." class="p-2 border rounded w-full mb-4">
+                    <select name="date" class="p-2 border rounded w-full mb-4">
+                        <option value="">Time Fliter</option>
+                        {% for date in dates %}
+                        <option value="{{ date|date:'Y-m' }}">{{ date|date:'Y-m' }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">
+                        搜索
+                    </button>
+                </form>
+                <a href="{% url 'all_news' %}" class="mt-4 block text-center bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded">
+                    重置搜索
+                </a>
+            </div>
+        </div>
+
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'js/news_detail_vote.js'%}"></script>
+</body>
+</html>

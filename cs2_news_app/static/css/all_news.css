@@ -1,0 +1,31 @@
+body {
+    font-family: 'Arial', sans-serif;
+}
+.news-block {
+    border: 2px solid #4361ee;
+    padding: 10px;
+    overflow: hidden; /* 保持溢出内容隐藏 */
+    transition: box-shadow 0.3s ease; /* 平滑阴影过渡 */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: relative;
+    height: 240px; /* 指定高度，确保背景填充 */
+}
+.news-block:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+.background-img {
+    background-size: cover; /* 覆盖整个容器 */
+    background-position: center; /* 中心对齐 */
+    width: 100%; /* 宽度填充整个容器 */
+    height: 100%; /* 高度填充整个容器 */
+    transition: transform 0.3s ease-in-out; /* 平滑变换效果 */
+}
+.news-block:hover .background-img {
+    transform: scale(1.1); /* 放大背景图 */
+}
+.news-content {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: white;
+}

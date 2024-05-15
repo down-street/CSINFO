@@ -1,0 +1,31 @@
+.carousel-item {
+    height: 93vh; /* 视口高度的30% */
+}
+
+.carousel-item img,
+.carousel-item video {
+    height: 100%; /* 图片或视频填满轮播项 */
+    object-fit: cover; /* 覆盖满整个区域，可能会裁切内容 */
+}
+
+
+.carousel-item {
+    background-image: url("../../images/bg.png"); /* 替换 'your-background-image-url.jpg' 为您的图片链接 */
+    background-size: cover; /* 覆盖整个元素区域，可能会裁切部分内容 */
+    background-position: center; /* 使背景图像居中显示 */
+    background-repeat: no-repeat; /* 不重复背景图像 */
+}
+
+/* 主标题样式 */
+.carousel-caption h5 {
+    font-size: 45px; /* 调整字体大小为28px */
+    font-weight: bold; /* 设置字体为加粗 */
+    color: white; /* 可以调整字体颜色 */
+}
+
+/* 副标题/正文样式 */
+.carousel-caption p {
+    font-size: 22px; /* 调整字体大小为18px */
+    font-weight: bold; /* 设置字体为加粗 */
+    color: white; /* 可以调整字体颜色 */
+}
