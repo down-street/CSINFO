@@ -17,7 +17,8 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'css/component/flex_center_box.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/component/layer_block.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/component/card.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/component/back-to-top.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/component/back_to_top_btn.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/component/more_matches_btn.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/component/carousel.css' %}">
 
     
@@ -98,10 +99,10 @@
 
 
 	<!-- 回到顶部按钮 -->
-    <button id="back-to-top" class="back-to-top-btn bg-gray-800 text-white p-2 rounded-full fixed bottom-4 right-4 transition-colors duration-300">
+    <button id="back-to-top" class="back-to-top-btn bg-gray-800 text-white p-2 rounded-full fixed bottom-4 right-4 transition-colors duration-300" style="text-decoration: none;>
         <i class="fas fa-arrow-up"></i>
     </button>
-    <script src="{% static 'js/back-to-top-btn.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/back_to_top_btn.js' %}" type="text/javascript"></script>
 
 
 
@@ -332,7 +333,7 @@
 			</div>
 
 			<div class="flex items-center justify-center">
-				<a href="{% url 'all_news' %}" class="bg-gray-800 text-white font-semibold py-2 px-4 text-sm rounded transition duration-300 ease-in-out hover:bg-orange-600 no-underline">
+				<a href="{% url 'all_news' %}" class="bg-gray-800 text-white font-semibold py-2 px-4 text-sm rounded transition duration-300 ease-in-out hover:bg-orange-600 no-underline" style="text-decoration: none;">
 					全部新闻
 				</a>
 			</div>
@@ -340,66 +341,76 @@
 		</div>
 	</div>
 
-	<!-- 比赛部分 -->
-	<div class="relative mx-auto" style="max-width: 85%; box-shadow: 0 4px 6px rgba(228, 135, 23, 0.8); background-color: rgb(228, 135, 23);">
 
-		<div id="matchCarousel" class="carousel slide match-carousel relative mx-auto" data-ride="carousel" data-interval="false">
-			
-			<!-- Indicators/dots -->
-			<ul class="carousel-indicators">
-				{% for group in grouped_matches %}
-				<li data-target="#matchCarousel" data-slide-to="{{ forloop.counter0 }}" {% if forloop.counter0 == initial_group_index %}class="active"{% endif %}></li>
-				{% endfor %}
-			</ul>
-	
-			<!-- The slideshow/carousel -->
-			<div class="carousel-inner">
-				{% for group in grouped_matches %}
-				<div class="carousel-item {% if forloop.counter0 == initial_group_index %}active{% endif %}">
-					<div class="d-flex justify-around flex-wrap">
-						{% for match in group %}
-						<div class="bg-white rounded-lg p-4 shadow-lg match-block">
-							<div class="text-center text-lg font-semibold mb-2">{{ match.match_name_big }}</div>
-							<div class="text-center text-sm text-gray-500 mb-2">{{ match.match_name_small }}</div>
-							<div class="text-center text-sm text-gray-500 mb-4">{{ match.time|date:"m-d H:i" }}</div>
-							<div class="flex items-center justify-center space-x-4 mb-2">
-								<div class="text-center">
-									<img src="{{ match.team1.images.first.image.url }}" alt="{{ match.team1.name }} logo" class="w-12 h-12 rounded-full shadow-md mb-1">
-									<div class="text-sm font-medium">{{ match.team1.name }}</div>
-								</div>
-								{% if match.state == '已结束' %}
-									<div class="text-xl font-bold">{{ match.score_1 }} : {{ match.score_2 }}</div>
-								{% else %}
-									<div class="text-3xl font-bold">VS</div>
-								{% endif %}
-								<div class="text-center">
-									<img src="{{ match.team2.images.first.image.url }}" alt="{{ match.team2.name }} logo" class="w-12 h-12 rounded-full shadow-md mb-1">
-									<div class="text-sm font-medium">{{ match.team2.name }}</div>
-								</div>
-							</div>
-							<div class="flex items-center justify-center">
-								<a href="{{ match.link }}" class="bg-gray-800 text-white font-semibold py-2 px-4 text-sm rounded transition duration-300 ease-in-out hover:bg-orange-600 no-underline">
-									回放
-								</a>
-							</div>
-						</div>
-						{% endfor %}
-					</div>
-				</div>
-				{% endfor %}
-			</div>
-	
-		</div>
-	
-		<!-- Left and right controls -->
-		<a class="carousel-control-prev" href="#matchCarousel" role="button" data-slide="prev" style="width: 5%; left: 15px;">
-			<span class="carousel-control-prev-icon" aria-hidden="true" style="width: 50px; height: 50px; background-color: rgb(228, 135, 23);"></span>
-		</a>
-		<a class="carousel-control-next" href="#matchCarousel" role="button" data-slide="next" style="width: 5%; right: 15px;">
-			<span class="carousel-control-next-icon" aria-hidden="true" style="width: 50px; height: 50px; background-color: rgb(228, 135, 23);"></span>
-		</a>
-		
-	</div>
+	<!-- 比赛部分 -->
+    <!-- 外层白色背景容器 -->
+    <div class="outer-container">
+        
+        <div class="relative mx-auto" style="max-width: 90%; box-shadow: 0 4px 6px rgba(228, 135, 23, 0.8); background-color: rgb(228, 135, 23);">
+
+            <div id="matchCarousel" class="carousel slide match-carousel relative mx-auto" data-ride="carousel" data-interval="false">
+                
+                <!-- Indicators/dots -->
+                <ul class="carousel-indicators">
+                    {% for group in grouped_matches %}
+                    <li data-target="#matchCarousel" data-slide-to="{{ forloop.counter0 }}" {% if forloop.counter0 == initial_group_index %}class="active"{% endif %}></li>
+                    {% endfor %}
+                </ul>
+        
+                <!-- The slideshow/carousel -->
+                <div class="carousel-inner">
+                    {% for group in grouped_matches %}
+                    <div class="carousel-item {% if forloop.counter0 == initial_group_index %}active{% endif %}">
+                        <div class="d-flex justify-around flex-wrap">
+                            {% for match in group %}
+                            <div class="bg-white rounded-lg p-4 shadow-lg match-block">
+                                <div class="text-center text-lg font-semibold mb-2">{{ match.match_name_big }}</div>
+                                <div class="text-center text-sm text-gray-500 mb-2">{{ match.match_name_small }}</div>
+                                <div class="text-center text-sm text-gray-500 mb-4">{{ match.time|date:"m-d H:i" }}</div>
+                                <div class="flex items-center justify-center space-x-4 mb-2">
+                                    <div class="text-center">
+                                        <img src="{{ match.team1.images.first.image.url }}" alt="{{ match.team1.name }} logo" class="w-12 h-12 rounded-full shadow-md mb-1">
+                                        <div class="text-sm font-medium">{{ match.team1.name }}</div>
+                                    </div>
+                                    {% if match.state == '已结束' %}
+                                        <div class="text-xl font-bold">{{ match.score_1 }} : {{ match.score_2 }}</div>
+                                    {% else %}
+                                        <div class="text-3xl font-bold">VS</div>
+                                    {% endif %}
+                                    <div class="text-center">
+                                        <img src="{{ match.team2.images.first.image.url }}" alt="{{ match.team2.name }} logo" class="w-12 h-12 rounded-full shadow-md mb-1">
+                                        <div class="text-sm font-medium">{{ match.team2.name }}</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-center">
+                                    <a href="{{ match.link }}" class="bg-gray-800 text-white font-semibold py-2 px-4 text-sm rounded transition duration-300 ease-in-out hover:bg-orange-600 no-underline" style="text-decoration: none;">
+                                        回放
+                                    </a>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+        
+            </div>
+    
+            <!-- Left and right controls -->
+            <a class="carousel-control-prev" href="#matchCarousel" role="button" data-slide="prev" style="width: 5%; left: 15px;">
+                <span class="carousel-control-prev-icon" aria-hidden="true" style="width: 50px; height: 50px; background-color: rgb(228, 135, 23);"></span>
+            </a>
+            <a class="carousel-control-next" href="#matchCarousel" role="button" data-slide="next" style="width: 5%; right: 15px;">
+                <span class="carousel-control-next-icon" aria-hidden="true" style="width: 50px; height: 50px; background-color: rgb(228, 135, 23);"></span>
+            </a>
+
+        </div>
+
+        <!-- 更多比赛按钮 -->
+        <a href="{% url 'all_matches' %}" class="more-matches-btn">
+            更多比赛
+        </a>
+    </div>
 
 
     <!--队伍和选手-->

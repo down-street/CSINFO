@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>所有比赛</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-800 text-white">
+
+    <!-- 回到主菜单按钮 -->
+    <div class="text-right p-4">
+        <a href="index.html" class="bg-gray-700 text-white font-semibold py-2 px-4 text-sm rounded transition duration-300 ease-in-out hover:bg-orange-600" style="text-decoration: none;">
+            回到主菜单
+        </a>
+    </div>
+    
+    <!-- 日期选择滚动条 -->
+    <div class="bg-gray-700 p-4 overflow-x-auto whitespace-nowrap flex items-center">
+        <button class="bg-gray-600 text-white px-2 py-1 rounded mr-2">&lt;</button>
+        <!-- Example dates; replace with dynamic content -->
+        <div class="date-item bg-gray-500 text-white px-4 py-2 rounded mr-2">2024-05-14 星期二</div>
+        <div class="date-item bg-gray-500 text-white px-4 py-2 rounded mr-2">2024-05-15 星期三</div>
+        <div class="date-item bg-gray-500 text-white px-4 py-2 rounded mr-2">2024-05-16 星期四</div>
+        <!-- Add more dates as needed -->
+        <button class="bg-gray-600 text-white px-2 py-1 rounded ml-2">&gt;</button>
+    </div>
+
+    <!-- 比赛信息 -->
+    <div class="p-4 space-y-4">
+        <!-- Example match; replace with dynamic content -->
+        <div class="bg-white p-4 flex items-center justify-between text-gray-800">
+            <div class="flex items-center">
+                <div class="text-gray-500">{{ match.time }}</div>
+                <div class="ml-4 font-bold">{{ match.match_name_big }}</div>
+            </div>
+            <div class="flex items-center">
+                <img src="{{ match.team1.images.first.image.url }}" class="h-5 w-5">
+                <div class="mx-2">{{ match.team1.name }}</div>
+                {{ match.score_1 }} : {{ match.score_2 }}
+                <div class="mx-2">{{ match.team2.name }}</div>
+                <img src="{{ match.team2.images.first.image.url }}" class="h-5 w-5">
+            </div>
+            <button class="bg-blue-500 text-white px-4 py-2 rounded">视频回放</button>
+        </div>
+        <!-- Repeat for other matches -->
+    </div>
+
+</body>
+
+</html>

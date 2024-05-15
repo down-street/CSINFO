@@ -1,4 +1,3 @@
-
 /* 回到顶部按钮样式 */
 .back-to-top-btn {
     background-color: #1f2937; /* bg-gray-800 */
@@ -11,6 +10,7 @@
     transition: background-color 0.3s; /* transition-colors duration-300 */
     display: none; /* 初始隐藏 */
     font-size: 1.5rem; /* 增加图标大小 */
+    z-index: 2147483647; /* 确保按钮位于所有其他元素之上 */
 }
 
 .back-to-top-btn:hover {

@@ -1,0 +1,37 @@
+/* 更多比赛按钮样式 */
+.more-matches-btn {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    background-color: #1f2937; /* bg-gray-800 */
+    color: white;
+    font-weight: bold;
+    height: 20vh; /* 设置高度为35vh */
+    padding: 0.5rem 1rem; /* 保持文字间距 */
+    border-radius: 0.25rem;
+    transition: background-color 0.3s ease-in-out;
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    text-decoration: none; /* 默认情况下去掉下划线 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.more-matches-btn:hover {
+    background-color: rgb(228, 135, 23); /* 指定的 RGB 值 */
+    color: white; /* 保持字体颜色为白色 */
+    text-decoration: none; /* 悬停时去掉下划线 */
+}
+
+
+
+.outer-container {
+    background-color: white; /* 纯白色背景 */
+    width: 95%;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
