@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>main page</title>
+    <meta charset="utf-8">
+
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/component/whole_page.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/component/change_button.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/component/nav_bar.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/component/flex_center_box.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/component/layer_block.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/component/card.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/component/slide.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/team_rank.css' %}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- 回到顶部按钮 -->
+    <button id="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    <script>
+        // 当用户滚动时，显示或隐藏回到顶部按钮
+        window.addEventListener("scroll", function () {
+            var backToTopButton = document.getElementById("back-to-top");
+            if (window.pageYOffset > 100) { // 当滚动距离大于100像素时显示按钮
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        });
+
+        // 当用户点击回到顶部按钮时，滚动到页面顶部
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+        // 绑定点击事件到回到顶部按钮
+        document.getElementById("back-to-top").addEventListener("click", scrollToTop);
+    </script>
+
+
+    <!-- 导航栏 -->
+    <div id="nav_block" class="block flex_center_box">
+        <div class="nav flex_center_box">
+            <div class="nav_ul">
+                <div class="nav_logo">
+                    <img src="../static/images/csinfo-logo.png" alt="Logo" id="nav_logo_img">
+                </div>
+                <div class="nav_wing">
+
+                    <div class="nav_li">
+                        <h4 href="main.html#top_top_block" class="nav_button">首页</h4>
+                    </div>
+                    <div class="nav_li">
+                        <h4 href="main.html#news_block" class="nav_button">新闻</h4>
+                        <div class="dropdown_content">
+                            <a href="#">子菜单1</a>
+                            <a href="#">子菜单2</a>
+                            <a href="#">子菜单3</a>
+                        </div>
+                    </div>
+                    <div class="nav_li">
+                        <h4 href="main.html#time_block" class="nav_button">赛事</h4>
+                        <div class="dropdown_content">
+                            <a href="#">子菜单1</a>
+                            <a href="#">子菜单2</a>
+                            <a href="#">子菜单3</a>
+                        </div>
+                    </div>
+                    <div class="nav_li">
+                        <h4 href="main.html#mid_block" class="nav_button">选手</h4>
+                        <div class="dropdown_content">
+                            <a href="#">子菜单1</a>
+                            <a href="#">子菜单2</a>
+                            <a href="#">子菜单3</a>
+                        </div>
+                    </div>
+                    <div class="nav_li">
+                        <h4 href="main.html#choose_block" class="nav_button">队伍</h4>
+                        <div class="dropdown_content">
+                            <a href="#">子菜单1</a>
+                            <a href="#">子菜单2</a>
+                            <a href="#">子菜单3</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav_toggle" id="nav_toggle">&#9776;</div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="nav_menu" id="nav_menu">
+
+        <div class="nav_menu_item">
+            <a href="main.html#top_top_block" class="nav_item_button">首页 </a>
+            <div class="dropdown_content">
+                <a href="#">子菜单1</a>
+                <a href="#">子菜单2</a>
+                <a href="#">子菜单3</a>
+            </div>
+        </div>
+        <div class="nav_menu_item">
+            <a href="main.html#news_block" class="nav_item_button">新闻</a>
+            <div class="dropdown_content">
+                <a href="#">子菜单1</a>
+                <a href="#">子菜单2</a>
+                <a href="#">子菜单3</a>
+            </div>
+        </div>
+        <div class="nav_menu_item">
+            <a href="main.html#time_block" class="nav_item_button">赛事</a>
+            <div class="dropdown_content">
+                <a href="#">子菜单1</a>
+                <a href="#">子菜单2</a>
+                <a href="#">子菜单3</a>
+            </div>
+        </div>
+        <div class="nav_menu_item">
+            <a href="main.html#mid_block" class="nav_item_button">选手</a>
+            <div class="dropdown_content">
+                <a href="#">子菜单1</a>
+                <a href="#">子菜单2</a>
+                <a href="#">子菜单3</a>
+            </div>
+        </div>
+        <div class="nav_menu_item">
+            <a href="main.html#choose_block" class="nav_item_button">队伍 </a>
+            <div class="dropdown_content">
+                <a href="#">子菜单1</a>
+                <a href="#">子菜单2</a>
+                <a href="#">子菜单3</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/side_menu.js' %}"></script>
+    <div class="container">
+        <div class="ranking-container">
+            <div class="team" onclick="toggleDetails(this)">
+                <div class="team-header">
+                    <div class="left">
+                        <div class="rank">#1</div>
+                        <div class="team-logo"><img src="{% static 'images/faze.png' %}"" alt=" FaZe"></div>
+                        <div class="team-name">FaZe</div>
+                    </div>
+                    <div class="right">
+                        <div class="team-points">982 points<div class="arrow-down"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="players">
+                    <div class="player">
+                        <img src="{% static 'images/karrigan.webp' %}">
+                        <h5 style="margin-top: 5px;">{{player[0].name}}</h5>
+                        <img src="{% static 'images/denmark.png' %}" class="square-image" style="border-radius:0 ">
+                    </div>
+                    <div class="player">
+                        <img src="{% static 'images/rain.webp' %}">
+                        <h5 style="margin-top: 5px;">{{player[1].name}}</h5>
+                        <img src="{% static 'images/denmark.png' %}" class="square-image" style="border-radius:0 ">
+                    </div>
+                    <div class="player">
+                        <img src="{% static 'images/frozen.webp' %}">
+                        <h5 style="margin-top: 5px;">{{player[2].name}}</h5>
+                        <img src="{% static 'images/denmark.png' %}" class="square-image" style="border-radius:0 ">
+                    </div>
+                    <div class="player">
+                        <img src="{% static 'images/ropz.webp' %}">
+                        <h5 style="margin-top: 5px;">{{player[3].name}}</h5>
+                        <img src="{% static 'images/denmark.png' %}" class="square-image" style="border-radius:0 ">
+                    </div>
+                    <div class="player">    
+                        <img src="{% static 'images/broky.webp' %}">
+                        <h5 style="margin-top: 5px;">{{player[4].name}}</h5>
+                        <img src="{% static 'images/denmark.png' %}" class="square-image" style="border-radius:0 ">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="news_container">
+            <div class="long_card">
+                <a href="{% url 'news_detail' news_2.id %}">
+                    <div class="card_header">
+                        <img src="{{ news_2.images.first.image.url }}" class="card_img"></img>
+                    </div>
+                    <div class="card_body">
+                        <div class="card_title">
+                            <h1>{{ news_2.title }}</h1>
+                        </div>
+                        <div class="card_content">
+                            <p>&emsp;&emsp;{{ news_2.date|date:"Y-m-d" }}</p>
+                        </div>
+                        <div class="card_bottom">
+                            <p></p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="long_card">
+                <a href="{% url 'news_detail' news_3.id %}">
+                    <div class="card_header">
+                        <img src="{{ news_3.images.first.image.url }}" class="card_img"></img>
+                    </div>
+                    <div class="card_body">
+                        <div class="card_title">
+                            <h1>{{ news_3.title }}</h1>
+                        </div>
+                        <div class="card_content">
+                            <p>&emsp;&emsp;{{ news_3.date|date:"Y-m-d" }}</p>
+                        </div>
+                        <div class="card_bottom">
+                            <p></p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="long_card">
+                <a href="{% url 'news_detail' news_3.id %}">
+                    <div class="card_header">
+                        <img src="{{ news_3.images.first.image.url }}" class="card_img"></img>
+                    </div>
+                    <div class="card_body">
+                        <div class="card_title">
+                            <h1>{{ news_3.title }}</h1>
+                        </div>
+                        <div class="card_content">
+                            <p>&emsp;&emsp;{{ news_3.date|date:"Y-m-d" }}</p>
+                        </div>
+                        <div class="card_bottom">
+                            <p></p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="long_card">
+                <a href="{% url 'news_detail' news_3.id %}">
+                    <div class="card_header">
+                        <img src="{{ news_3.images.first.image.url }}" class="card_img"></img>
+                    </div>
+                    <div class="card_body">
+                        <div class="card_title">
+                            <h1>{{ news_3.title }}</h1>
+                        </div>
+                        <div class="card_content">
+                            <p>&emsp;&emsp;{{ news_3.date|date:"Y-m-d" }}</p>
+                        </div>
+                        <div class="card_bottom">
+                            <p></p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+
+        </div>
+    </div>
+    <script src="{% static 'js/team_rank.js' %}"></script>
+
+
+    <div id="bottom_block" class="block flex_center_box_v">
+        <p>人机交互小组</p>
+        <p>小组成员：2153293 苏子言 2153601 洪杨 2151531 栾佳浩</p>
+        <p>2152969 李咏桓 2152594 杨举列</p>
+    </div>
+
+</body>
+
+</html>
