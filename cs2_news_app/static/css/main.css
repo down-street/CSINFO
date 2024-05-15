@@ -179,6 +179,8 @@
 	width: 60%;
 }
 .ranking_title {
+	font-size:large;
+	font-family: Helvetica, Tahoma, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei";
 	width: 60%;
     display: flex;
     align-items: center;
@@ -197,6 +199,10 @@
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 	justify-content: space-around;
+}
+.ranking_item:hover {
+    background-color:rgba(0, 0, 0, 0.1);
+	cursor: url(https://www.csgo.com.cn/dist/images/pointer-default.png), auto;
 }
 .show_full_rank{
 	margin-top: 10px;
