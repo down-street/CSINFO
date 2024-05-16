@@ -80,4 +80,10 @@ $(document).ready(function () {
 
     // Initialize date position
     centerToday();
+
+    // Video play button event
+    $(".video-play").on("click", function () {
+        var videoUrl = $(this).data("video-url");
+        window.open(videoUrl, "_blank", "width=800,height=600");
+    });
 });

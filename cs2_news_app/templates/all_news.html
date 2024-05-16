@@ -5,34 +5,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> 
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/all_news.css' %}">
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-        }
-        .news-item img {
-            height: 180px; /* 缩小图片高度 */
-            object-fit: cover; /* 保持图片比例正确 */
-            width: 100%; /* 图片宽度自适应 */
-        }
-        .news-item {
-            display: block; /* 确保链接占据整个新闻块 */
-            text-decoration: none; /* 去掉下划线 */
-            color: inherit; /* 继承文字颜色 */
-        }
-    </style>
+
 </head>
 <body>
     <div class="flex min-h-screen">
         <!-- Left side navigation -->
-        <div class="w-16 bg-blue-200 h-screen sticky top-0 flex flex-col justify-between py-5 overflow-auto">
-            <div class="text-blue-400 text-center">
-                <a href="http://127.0.0.1:8000/" class="mb-4">
-                    <i class="fas fa-home fa-lg"></i>
-                </a>
-            </div>
+        <div class="w-16 bg-[#dd6b20] h-screen sticky top-0 flex flex-col justify-between py-5 items-center overflow-auto">
+            <!-- 返回主界面按钮 -->
+            <a href="http://127.0.0.1:8000/" class="return-home">
+                <i class="fas fa-home fa-2x"></i>
+            </a>
         </div>
 
-        <div class="flex-1 px-20 py-10 overflow-hidden">
+
+        <div class="flex-1 px-20 py-10 bg-[#ebebeb] overflow-hidden">
             <h1 class="text-3xl font-bold underline text-center my-8">ALL NEWS</h1>
             <div class="grid grid-cols-3 gap-8">
                 {% for news in all_news %}
@@ -51,7 +37,7 @@
         
         
         <!-- Right side search -->
-        <div class="w-60 bg-blue-100 h-screen sticky top-0 p-5 overflow-auto flex flex-col">
+        <div class="w-60 bg-[#f2c38b] h-screen sticky top-0 p-5 overflow-auto flex flex-col">
             <div class="mb-4">
                 <h2 class="mb-20"> </h2>
                 <h2 class=" text-lg font-bold text-center mb-4">搜索新闻</h2>
@@ -63,7 +49,7 @@
                         <option value="{{ date|date:'Y-m' }}">{{ date|date:'Y-m' }}</option>
                         {% endfor %}
                     </select>
-                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">
+                    <button type="submit" class="bg-[#dd6b20] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">
                         搜索
                     </button>
                 </form>

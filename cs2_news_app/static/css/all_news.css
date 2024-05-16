@@ -1,8 +1,19 @@
 body {
     font-family: 'Arial', sans-serif;
 }
+.news-item img {
+    height: 180px; /* 缩小图片高度 */
+    object-fit: cover; /* 保持图片比例正确 */
+    width: 100%; /* 图片宽度自适应 */
+}
+.news-item {
+    display: block; /* 确保链接占据整个新闻块 */
+    text-decoration: none; /* 去掉下划线 */
+    color: inherit; /* 继承文字颜色 */
+}
+
 .news-block {
-    border: 2px solid #4361ee;
+    border: 2px solid #dd6b20;
     padding: 10px;
     overflow: hidden; /* 保持溢出内容隐藏 */
     transition: box-shadow 0.3s ease; /* 平滑阴影过渡 */
@@ -10,9 +21,11 @@ body {
     position: relative;
     height: 240px; /* 指定高度，确保背景填充 */
 }
+
 .news-block:hover {
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
+
 .background-img {
     background-size: cover; /* 覆盖整个容器 */
     background-position: center; /* 中心对齐 */
@@ -20,12 +33,36 @@ body {
     height: 100%; /* 高度填充整个容器 */
     transition: transform 0.3s ease-in-out; /* 平滑变换效果 */
 }
+
 .news-block:hover .background-img {
     transform: scale(1.1); /* 放大背景图 */
 }
+
 .news-content {
     position: absolute;
     bottom: 10px;
     left: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.5); /* 半透明背景 */
+    padding: 10px;
+    border-radius: 5px;
     color: white;
+}
+
+/* 返回主界面按钮样式 */
+.return-home {
+    color: white;
+    background-color: rgba(68, 68, 68, 0.8);
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.return-home:hover {
+    background-color: rgba(255, 165, 0, 0.8); /* 悬停时变色 */
+    color: black; /* 悬停时文字颜色变为黑色 */
 }

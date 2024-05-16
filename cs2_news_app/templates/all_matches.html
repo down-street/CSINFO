@@ -9,57 +9,60 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/all_matches.css' %}">
 </head>
 
-<body class="bg-gray-800 text-white">
+<body>
 
-    <!-- 回到主菜单按钮 -->
-    <div class="text-right p-4">
-        <a href="index.html" class="bg-gray-700 text-white font-semibold py-2 px-4 text-sm rounded transition duration-300 ease-in-out hover:bg-orange-600" style="text-decoration: none;">
-            回到主菜单
-        </a>
-    </div>
-
-    <!-- 日期选择滚动条 -->
-    <div class="bg-gray-700 p-4 flex items-center justify-center space-x-4">
-        <button class="left-arrow bg-gray-600 text-white px-2 py-1 rounded mr-2">&lt;</button>
-        <div class="date-container">
-            <div class="date-item-wrapper">
-                {% for date in dates %}
-                <div class="date-item bg-gray-500 text-white rounded cursor-pointer" data-date="{{ date }}">
-                    <span>{{ date|date:"n/j" }}</span>
-                    <span>{{ date|date:"l" }}</span>
+    <!-- 背景图片 -->
+    <div class="background-image relative">
+        <img src="{% static 'images/match_bg.jpg' %}" alt="背景图片" class="w-full h-full object-cover">
+        
+        <!-- 日期选择滚动条 -->
+        <div class="date-scrollbar">
+            <div class="date-scrollbar-inner">
+                <button class="left-arrow bg-gray-600 text-white px-2 py-1 rounded mr-2">&lt;</button>
+                <div class="date-container">
+                    <div class="date-item-wrapper">
+                        {% for date in dates %}
+                        <div class="date-item bg-gray-500 text-white rounded cursor-pointer" data-date="{{ date }}">
+                            <span>{{ date|date:"n/j" }}</span>
+                            <span>{{ date|date:"l" }}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
                 </div>
-                {% endfor %}
+                <button class="right-arrow bg-gray-600 text-white px-2 py-1 rounded ml-2">&gt;</button>
             </div>
         </div>
-        <button class="right-arrow bg-gray-600 text-white px-2 py-1 rounded ml-2">&gt;</button>
     </div>
-    
 
-<!-- 比赛信息 -->
-<div class="p-4 space-y-4">
-    {% for match in matches %}
-    <div class="bg-white p-4 flex items-center justify-between text-gray-800 rounded-lg shadow-md match-item transition-transform transform hover:scale-105" data-date="{{ match.time.date }}">
-        <div class="flex items-center space-x-4">
-            <div class="text-gray-500 text-sm">{{ match.time }}</div>
-            <div class="font-bold text-lg">{{ match.match_name_big }}</div>
+    <!-- 比赛信息 -->
+    <div>
+        {% for match in matches %}
+        <div class="bg-white p-4 flex items-center justify-between text-gray-800 rounded-lg shadow-md match-item transition-transform transform hover:scale-105" data-date="{{ match.time.date }}">
+            <div class="flex items-center space-x-4">
+                <div class="text-gray-500 text-sm">{{ match.time }}</div>
+                <div class="font-bold text-lg">{{ match.match_name_big }}</div>
+            </div>
+            <div class="flex items-center space-x-2 flex-center">
+                <img src="{{ match.team1.images.first.image.url }}" class="h-8 w-8 rounded-full">
+                <div class="text-md">{{ match.team1.name }}</div>
+                <div class="font-bold text-lg">{{ match.score_1 }} : {{ match.score_2 }}</div>
+                <div class="text-md">{{ match.team2.name }}</div>
+                <img src="{{ match.team2.images.first.image.url }}" class="h-8 w-8 rounded-full">
+            </div>
+            <button class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 transition-colors video-play" data-video-url="{{ match.video_url }}">视频回放</button>
         </div>
-        <div class="flex items-center space-x-2">
-            <img src="{{ match.team1.images.first.image.url }}" class="h-8 w-8 rounded-full">
-            <div class="text-md">{{ match.team1.name }}</div>
-            <div class="font-bold text-lg">{{ match.score_1 }} : {{ match.score_2 }}</div>
-            <div class="text-md">{{ match.team2.name }}</div>
-            <img src="{{ match.team2.images.first.image.url }}" class="h-8 w-8 rounded-full">
-        </div>
-        <button class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 transition-colors">视频回放</button>
+        {% endfor %}
     </div>
-    {% endfor %}
-</div>
 
-    
+    <!-- 返回主界面按钮 -->
+    <a href="http://127.0.0.1:8000/" class="return-home">
+        <i class="fas fa-home fa-lg"></i>
+    </a>
 
     <script>
         var today = "{{ today }}";  // 将模板变量传递给JavaScript

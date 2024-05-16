@@ -1,3 +1,45 @@
+body {
+    background-color: rgb(235, 235, 235); /* 修改页面其余部分的背景颜色 */
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.background-image {
+    position: relative;
+    height: 25vh; /* 设置高度为视窗高度的四分之一 */
+    overflow: hidden; /* 超出部分隐藏 */
+}
+
+.background-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 保持图片比例并裁切超出部分 */
+}
+
+.date-scrollbar {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* 确保纵向居中 */
+}
+
+.date-scrollbar-inner {
+    background: rgba(255, 255, 255, 0.3); /* 背景设置为半透明 */
+    backdrop-filter: blur(10px); /* 毛玻璃效果 */
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+}
+
 .date-item.selected {
     background-color: #dd6b20; /* Tailwind's bg-orange-600 */
 }
@@ -33,7 +75,6 @@
 }
 
 .date-container {
-
     overflow-x: hidden;
     justify-content: center;
     align-items: center;
@@ -62,15 +103,27 @@
     transition: background-color 0.3s ease;
 }
 
+.left-arrow:hover,
+.right-arrow:hover {
+    background-color: #666; /* 悬停时的背景色 */
+}
 
-
+.main-content {
+    flex: 1; /* 占据剩余空间 */
+    overflow-y: auto; /* 启用垂直滚动 */
+    padding: 20px;
+    box-sizing: border-box;
+}
 
 .match-item {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 800px; /* 限制最大宽度 */
+    margin: 10px auto; /* 居中对齐并增加间距 */
+    padding: 10px; /* 缩小 padding */
 }
 
 .match-item:hover {
-    transform: scale(1.05);
+    transform: scale(1.02); /* 缩小放大效果 */
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
 }
 
@@ -92,4 +145,26 @@
 
 .shadow-lg {
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.flex-center {
+    justify-content: center;
+}
+
+/* 返回主界面按钮样式 */
+.return-home {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    background-color: rgba(68, 68, 68, 0.8);
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.return-home:hover {
+    background-color: rgba(255, 165, 0, 0.8); /* 悬停时变色 */
+    color: black; /* 悬停时文字颜色变为黑色 */
 }
