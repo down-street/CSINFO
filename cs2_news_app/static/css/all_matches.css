@@ -1,0 +1,95 @@
+.date-item.selected {
+    background-color: #dd6b20; /* Tailwind's bg-orange-600 */
+}
+
+.date-item:hover {
+    background-color: #dd6b20;
+}
+
+.date-item {
+    width: 100px; /* 固定宽度 */
+    height: 60px; /* 固定高度 */
+    text-align: center;
+    line-height: 1.2;
+    flex-shrink: 0; /* 防止缩小 */
+    margin-right: 8px; /* 日期块之间的间距 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold; /* 加粗文字 */
+}
+
+.date-item span {
+    display: block;
+}
+
+.date-item span:first-child {
+    font-size: 1.5rem; /* 更大的日期文字 */
+}
+
+.date-item span:last-child {
+    font-size: 0.8rem; /* 更小的星期文字 */
+}
+
+.date-container {
+
+    overflow-x: hidden;
+    justify-content: center;
+    align-items: center;
+    width: 450px; /* 确保只显示三个日期块 */
+    padding: 0 0px; /* 移除多余的间距 */
+}
+
+.date-item-wrapper {
+    display: flex;
+    transition: transform 0.3s ease;
+}
+
+.left-arrow,
+.right-arrow {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #444; /* 修改背景色 */
+    color: #fff;
+    border-radius: 50%; /* 圆角 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 添加阴影 */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+
+
+.match-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.match-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.bg-blue-500 {
+    background-color: #3b82f6; /* Tailwind's bg-blue-500 */
+}
+
+.bg-blue-600 {
+    background-color: #2563eb; /* Tailwind's bg-blue-600 */
+}
+
+.text-md {
+    font-size: 1rem; /* Tailwind's text-md */
+}
+
+.text-lg {
+    font-size: 1.125rem; /* Tailwind's text-lg */
+}
+
+.shadow-lg {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
