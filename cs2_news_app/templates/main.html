@@ -16,7 +16,6 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'css/component/nav_bar.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/component/flex_center_box.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/component/layer_block.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/component/card.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/component/back_to_top_btn.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/component/more_matches_btn.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/component/carousel.css' %}">
@@ -198,148 +197,91 @@
 	<script src="{% static 'js/side_menu.js' %}"></script>
 
 	
-	
+	<br></br>
 	<!-- 主体部分 -->
 	<!-- 新闻 -->
-	<div id="news_block" class="block flex_center_box">
-		<div id="news_block_background" class="flex_center_box">
-			<div class="block_title">
-				<h1>赛场新闻</h1>
-			</div>
-
-			<div class="news_block_big flex_center_box">
-				<div class="card_width">
-					<!-- 链接 -->
-					<a href="{% url 'news_detail' news_1.id %}">
-						<div class="card_header_width">
-							<!-- 图片 -->
-							<img src="{{ news_1.images.first.image.url }}" class="card_img"></img>
+	<div class="relative mx-auto max-w-5xl p-8" style="max-width: 85%; background-color: rgb(242, 195, 139); box-shadow: 0 4px 6px rgba(228, 135, 23, 0.8); border-radius: 10px;">
+		<div class="block_title mb-8 text-center">
+			<h1 class="text-2xl font-bold">赛场新闻</h1>
+		</div>
+	
+		<div class="grid grid-cols-1 lg:grid-cols-5 gap-6 mb-8">
+			<div class="relative col-span-1 lg:col-span-3 flex shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl rounded-lg">
+				<a href="{% url 'news_detail' news_1.id %}" class="block group w-full" style="color: inherit; text-decoration: none;">
+					<div class="flex h-64">
+						<div class="w-2/3 overflow-hidden rounded-l-lg">
+							<img src="{{ news_1.images.first.image.url }}" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110 rounded-l-lg">
 						</div>
-						<div class="card_body_width">
-							<!-- 内容一 -->
-							<div class="card_title">
-								<h1>{{ news_1.title }}</h1>
-							</div>
-							<div class="card_content">
-								<p>&emsp;&emsp;{{ news_1.date|date:"Y-m-d" }}</p>
-							</div>
-							<div class="card_bottom">
-								<p></p>
-							</div>
+						<div class="w-1/3 p-4 bg-white flex flex-col justify-center rounded-r-lg">
+							<h1 class="text-xl font-bold">{{ news_1.title }}</h1>
+							<p class="mt-2 text-gray-600">{{ news_1.date|date:"Y-m-d" }}</p>
 						</div>
-					</a>
-				</div>
-
-				<div class="card_width">
-					<!-- 链接 -->
-					<a href="{% url 'news_detail' news_2.id %}">
-						<div class="card_header_width">
-							<!-- 图片 -->
-							<img src="{{ news_2.images.first.image.url }}" class="card_img"></img>
-						</div>
-						<div class="card_body_width">
-							<!-- 内容一 -->
-							<div class="card_title">
-								<h1>{{ news_2.title }}</h1>
-							</div>
-							<div class="card_content">
-								<p>&emsp;&emsp;{{ news_2.date|date:"Y-m-d" }}</p>
-							</div>
-							<div class="card_bottom">
-								<p></p>
-							</div>
-						</div>
-					</a>
-				</div>
-			</div>
-
-			<div class="news_block_small flex_center_box">
-				<div class="card">
-					<a href="{% url 'news_detail' news_1.id %}"> 
-						<div class="card_header">
-							<img src="{{ news_1.images.first.image.url }}" class="card_img"></img>
-						</div>
-						<div class="card_body">
-							<div class="card_title">
-								<h1>{{ news_1.title }}</h1>
-							</div>
-							<div class="card_content">
-								<p>&emsp;&emsp;{{ news_1.date|date:"Y-m-d" }}</p>
-							</div>
-							<div class="card_bottom">
-								<p></p>
-							</div>
-						</div>
-					</a>
-				</div>
-
-				<div class="card">
-					<a href="{% url 'news_detail' news_2.id %}"> 
-						<div class="card_header">
-							<img src="{{ news_2.images.first.image.url }}" class="card_img"></img>
-						</div>
-						<div class="card_body">
-							<div class="card_title">
-								<h1>{{ news_2.title }}</h1>
-							</div>
-							<div class="card_content">
-								<p>&emsp;&emsp;{{ news_2.date|date:"Y-m-d" }}</p>
-							</div>
-							<div class="card_bottom">
-								<p></p>
-							</div>
-						</div>
-					</a>
-				</div>
-
-				<div class="card">
-					<a href="{% url 'news_detail' news_3.id %}"> 
-						<div class="card_header">
-							<img src="{{ news_3.images.first.image.url }}" class="card_img"></img>
-						</div>
-						<div class="card_body">
-							<div class="card_title">
-								<h1>{{ news_3.title }}</h1>
-							</div>
-							<div class="card_content">
-								<p>&emsp;&emsp;{{ news_3.date|date:"Y-m-d" }}</p>
-							</div>
-							<div class="card_bottom">
-								<p></p>
-							</div>
-						</div>
-					</a>
-				</div>
-
-				<div class="card">
-					<a href="{% url 'news_detail' news_4.id %}"> 
-						<div class="card_header">
-							<img src="{{ news_4.images.first.image.url }}" class="card_img"></img>
-						</div>
-						<div class="card_body">
-							<div class="card_title">
-								<h1>{{ news_4.title }}</h1>
-							</div>
-							<div class="card_content">
-								<p>&emsp;&emsp;{{ news_4.date|date:"Y-m-d" }}</p>
-							</div>
-							<div class="card_bottom">
-								<p></p>
-							</div>
-						</div>
-					</a>
-				</div>
-
-			</div>
-
-			<div class="flex items-center justify-center">
-				<a href="{% url 'all_news' %}" class="bg-gray-800 text-white font-semibold py-2 px-4 text-sm rounded transition duration-300 ease-in-out hover:bg-orange-600 no-underline" style="text-decoration: none;">
-					全部新闻
+					</div>
 				</a>
 			</div>
-			
+	
+			<div class="relative col-span-1 lg:col-span-2 flex shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl rounded-lg">
+				<a href="{% url 'news_detail' news_2.id %}" class="block group w-full" style="color: inherit; text-decoration: none;">
+					<div class="flex h-64">
+						<div class="w-2/3 overflow-hidden rounded-l-lg">
+							<img src="{{ news_2.images.first.image.url }}" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110 rounded-l-lg">
+						</div>
+						<div class="w-1/3 p-4 bg-white flex flex-col justify-center rounded-r-lg">
+							<h1 class="text-xl font-bold">{{ news_2.title }}</h1>
+							<p class="mt-2 text-gray-600">{{ news_2.date|date:"Y-m-d" }}</p>
+						</div>
+					</div>
+				</a>
+			</div>
+	
+			<div class="relative col-span-1 lg:col-span-2 shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl rounded-lg">
+				<a href="{% url 'news_detail' news_3.id %}" class="block group w-full" style="color: inherit; text-decoration: none;">
+					<div class="overflow-hidden h-40 rounded-t-lg">
+						<img src="{{ news_3.images.first.image.url }}" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110 rounded-t-lg">
+					</div>
+					<div class="p-2 bg-white rounded-b-lg">
+						<h1 class="text-lg font-bold">{{ news_3.title }}</h1>
+						<p class="mt-1 text-gray-600">{{ news_3.date|date:"Y-m-d" }}</p>
+					</div>
+				</a>
+			</div>
+	
+			<div class="relative col-span-1 lg:col-span-1 shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl rounded-lg">
+				<a href="{% url 'news_detail' news_4.id %}" class="block group w-full" style="color: inherit; text-decoration: none;">
+					<div class="overflow-hidden h-40 rounded-t-lg">
+						<img src="{{ news_4.images.first.image.url }}" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110 rounded-t-lg">
+					</div>
+					<div class="p-2 bg-white rounded-b-lg">
+						<h1 class="text-lg font-bold">{{ news_4.title }}</h1>
+						<p class="mt-1 text-gray-600">{{ news_4.date|date:"Y-m-d" }}</p>
+					</div>
+				</a>
+			</div>
+	
+			<div class="relative col-span-1 lg:col-span-2 shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl rounded-lg">
+				<a href="{% url 'news_detail' news_1.id %}" class="block group w-full" style="color: inherit; text-decoration: none;">
+					<div class="overflow-hidden h-40 rounded-t-lg">
+						<img src="{{ news_1.images.first.image.url }}" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110 rounded-t-lg">
+					</div>
+					<div class="p-2 bg-white rounded-b-lg">
+						<h1 class="text-lg font-bold">{{ news_1.title }}</h1>
+						<p class="mt-1 text-gray-600">{{ news_1.date|date:"Y-m-d" }}</p>
+					</div>
+				</a>
+			</div>
 		</div>
+	
+		<div class="flex items-center justify-center">
+			<a href="{% url 'all_news' %}" class="bg-gray-800 text-white font-semibold py-2 px-4 text-sm rounded transition duration-300 ease-in-out hover:bg-orange-600 no-underline" style="text-decoration: none;">
+				全部新闻
+			</a>
+		</div>
+
 	</div>
+	
+	
+	<br></br><br></br>
+	
 
 
 	<!-- 比赛部分 -->
