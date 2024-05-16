@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> 
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/all_news.css' %}">
-
+    <link rel="stylesheet" type="text/css" href="{% static 'css/component/return_home_btn.css' %}">
 </head>
 <body>
     <div class="flex min-h-screen">
@@ -49,7 +49,7 @@
                         <option value="{{ date|date:'Y-m' }}">{{ date|date:'Y-m' }}</option>
                         {% endfor %}
                     </select>
-                    <button type="submit" class="bg-[#dd6b20] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">
+                    <button type="submit" class="bg-[#dd6b20] hover:bg-[#fd3f01] text-white font-bold py-2 px-4 rounded w-full">
                         搜索
                     </button>
                 </form>
