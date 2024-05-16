@@ -58,7 +58,6 @@
 .nav_toggle {
     display: none; /* Initially hidden */
     font-size: 30px;
-    cursor: pointer;
     margin-left: auto;
     padding: 10px;
     color: #ffffff; /* Toggle button color */
@@ -129,7 +128,6 @@
 	padding-right: 15px;
     padding-left: 35px;
 	border:none;
-	cursor: url(https://www.csgo.com.cn/dist/images/pointer-default.png), auto;
 }
 
 
@@ -177,7 +175,6 @@
 	margin: 0;
 	padding: 0 30px;
 	border:none;
-	cursor: url(https://www.csgo.com.cn/dist/images/pointer-default.png), auto;
 }
 .nav_item_button{
 	display: flex;
@@ -207,7 +204,6 @@
 	margin: 0;
 	padding: 0 50px;
 	border:none;
-	cursor: url(https://www.csgo.com.cn/dist/images/pointer-default.png), auto;
 }
 
 .nav_menu .nav_menu_item {
@@ -224,5 +220,4 @@
     margin: 0;
     padding: 0 60px;
     border: none;
-    cursor: url(https://www.csgo.com.cn/dist/images/pointer-default.png), auto;
 }

@@ -46,7 +46,6 @@
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: 0 50%;
-	background-image: url(https://www.csgo.com.cn/jpg/161212/10691481525735991.jpg);
 }
 
 #amateur_team {
@@ -172,7 +171,6 @@
 }
 .ranking_item:hover {
     background-color:rgba(0, 0, 0, 0.1);
-	cursor: url(https://www.csgo.com.cn/dist/images/pointer-default.png), auto;
 }
 .show_full_rank{
 	margin-top: 10px;

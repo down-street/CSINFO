@@ -6,8 +6,7 @@
     margin-top: 2vh;
     margin-right: 1%;
     margin-left: 1%;
-    background-color: white;
-    cursor: pointer;
+    background-color: white;  
     overflow: hidden;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     transition: all 0.4s;
@@ -25,7 +24,6 @@
     margin-right: 1%;
     margin-left: 1%;
     background-color: white;
-    cursor: pointer;
     overflow: hidden;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     transition: all 0.4s;
@@ -38,8 +36,7 @@
 .card_full_pic{
     width: 100%;
     height: 100%;
-    background-color:  #ebedf0;
-    cursor: pointer;
+    background-color:  #ebedf0; 
     overflow: hidden;
     transition: all 0.4s;
 }
@@ -73,27 +70,21 @@
     background-color: white;
     overflow: hidden;   
 }
-.card_header:hover{
-    cursor: url(https://www.csgo.com.cn/dist/images/pointer-default.png), auto;
-}
+
 .card_header_width{
     width: 60%;
     height: 100%;
     background-color: white; 
     overflow: hidden;  
 }
-.card_header_width:hover{
-    cursor: url(https://www.csgo.com.cn/dist/images/pointer-default.png), auto;
-}
+
 .card_full_pic_header {
     width: 100%;
     height: 100%;
     background-color: white;
     overflow: hidden;
 }
-.card_full_pic_header:hover{
-    cursor: url(https://www.csgo.com.cn/dist/images/pointer-default.png), auto;
-}
+
 .card_img{
     height: 100%;
     min-width: 100%;
@@ -118,21 +109,15 @@
     padding: 5px 10px;
     overflow: hidden;
 }
-.card_body:hover{
-    cursor: url(https://www.csgo.com.cn/dist/images/pointer-default.png), auto;
-}
-.card_full_pic_body:hover{
-    cursor: url(https://www.csgo.com.cn/dist/images/pointer-default.png), auto;
-}
+
+
 .card_body_width{
     max-width: 40%;
     max-height: 90%;
     padding: 5% 10px;
     overflow: hidden;
 }
-.card_body_width:hover{
-    cursor: url(https://www.csgo.com.cn/dist/images/pointer-default.png), auto;
-}
+
 .card_full_pic_body{
     position: absolute;
     bottom: 5%;
@@ -179,9 +164,7 @@
     width: 100%;
     font-size: 0.5em;
 }
-.card_button:hover{
-    cursor: url(https://www.csgo.com.cn/dist/images/pointer-default.png), auto;
-}
+
 /**/
 .full_box {
     width: 100%;

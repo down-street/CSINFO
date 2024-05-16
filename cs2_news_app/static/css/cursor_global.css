@@ -1,0 +1,21 @@
+
+body, html {
+    cursor: url(https://www.csgo.com.cn/dist/images/pointer-default.png), auto;
+}
+/* 光标悬停在按钮和链接上的样式 */
+button, 
+a, 
+.upvote-button, 
+.downvote-button,
+.more-matches-btn,
+
+
+
+
+.input[type="button"], 
+.input[type="submit"], 
+.input[type="reset"], 
+.input[type="file"]::-webkit-file-upload-button, 
+.button {
+    cursor: url(https://www.csgo.com.cn/dist/images/pointer-default.png), pointer;
+}
