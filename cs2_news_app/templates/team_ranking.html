@@ -58,7 +58,7 @@
                         <h4 href="main.html" class="nav_button">选手</h4>
                         <div class="dropdown_content">
                             <a href="{% url 'home' %}player_ranking">选手排行</a>
-                            <a href="{% url 'home' %}player/advent">每周选手</a>
+                            <a href="{% url 'home' %}player/ZywOo">每周选手</a>
                         </div>
                     </div>
                     <div class="nav_li">
@@ -142,35 +142,35 @@
                             <div class="player text-center">
                                 <img src="../static/images/player/head/{{players.0.0.nickname}}.webp"
                                     class="w-8 h-8 rounded-full mx-auto">
-                                <h3 class="mt-1">{{players.0.0.nickname}}</h5>
+                                <h3 class="mt-1" onclick="redirect('{% url 'home' %}player/{{ players.0.0.nickname }}')">{{players.0.0.nickname}}</h5>
                                     <img src="../static/images/flags/{{players.0.0.nationality}}.png"
                                         class="w-4 h-4 mx-auto" style="border-radius: 0;margin-top:5px">
                             </div>
                             <div class="player text-center">
                                 <img src="../static/images/player/head/{{players.0.1.nickname}}.webp"
                                     class="w-8 h-8 rounded-full mx-auto">
-                                <h3 class="mt-1">{{players.0.1.nickname}}</h5>
+                                <h3 class="mt-1" onclick="redirect('{% url 'home' %}player/{{ players.0.1.nickname }}')">{{players.0.1.nickname}}</h5>
                                     <img src="../static/images/flags/{{players.0.1.nationality}}.png"
                                         class="w-4 h-4 mx-auto" style="border-radius: 0;margin-top:5px">
                             </div>
                             <div class="player text-center">
                                 <img src="../static/images/player/head/{{players.0.2.nickname}}.webp"
                                     class="w-8 h-8 rounded-full mx-auto">
-                                <h3 class="mt-1">{{players.0.2.nickname}}</h5>
+                                <h3 class="mt-1" onclick="redirect('{% url 'home' %}player/{{ players.0.2.nickname }}')">{{players.0.2.nickname}}</h5>
                                     <img src="../static/images/flags/{{players.0.2.nationality}}.png"
                                         class="w-4 h-4 mx-auto" style="border-radius: 0;margin-top:5px">
                             </div>
                             <div class="player text-center">
                                 <img src="../static/images/player/head/{{players.0.3.nickname}}.webp"
                                     class="w-8 h-8 rounded-full mx-auto">
-                                <h3 class="mt-1">{{players.0.3.nickname}}</h5>
+                                <h3 class="mt-1" onclick="redirect('{% url 'home' %}player/{{ players.0.3.nickname }}')">{{players.0.3.nickname}}</h5>
                                     <img src="../static/images/flags/{{players.0.3.nationality}}.png"
                                         class="w-4 h-4 mx-auto" style="border-radius: 0;margin-top:5px">
                             </div>
                             <div class="player text-center">
                                 <img src="../static/images/player/head/{{players.0.4.nickname}}.webp"
                                     class="w-8 h-8 rounded-full mx-auto">
-                                <h3 class="mt-1">{{players.0.4.nickname}}</h5>
+                                <h3 class="mt-1" onclick="redirect('{% url 'home' %}player/{{ players.0.4.nickname }}')">{{players.0.4.nickname}}</h5>
                                     <img src="../static/images/flags/{{players.0.4.nationality}}.png"
                                         class="w-4 h-4 mx-auto" style="border-radius: 0;margin-top:5px">
                             </div>
@@ -193,35 +193,35 @@
                             <div class="player text-center">
                                 <img src="../static/images/player/head/{{players.1.0.nickname}}.webp"
                                     class="w-8 h-8 rounded-full mx-auto">
-                                <h3 class="mt-1">{{players.1.0.nickname}}</h5>
+                                <h3 class="mt-1" onclick="redirect('{% url 'home' %}player/{{ players.1.0.nickname }}')">{{players.1.0.nickname}}</h5>
                                     <img src="../static/images/flags/{{players.1.0.nationality}}.png"
                                         class="w-4 h-4 mx-auto" style="border-radius: 0;margin-top:5px">
                             </div>
                             <div class="player text-center">
                                 <img src="../static/images/player/head/{{players.1.1.nickname}}.webp"
                                     class="w-8 h-8 rounded-full mx-auto">
-                                <h3 class="mt-1">{{players.1.1.nickname}}</h5>
+                                <h3 class="mt-1"onclick="redirect('{% url 'home' %}player/{{ players.1.1.nickname }}')">{{players.1.1.nickname}}</h5>
                                     <img src="../static/images/flags/{{players.1.1.nationality}}.png"
                                         class="w-4 h-4 mx-auto" style="border-radius: 0;margin-top:5px">
                             </div>
                             <div class="player text-center">
                                 <img src="../static/images/player/head/{{players.1.2.nickname}}.webp"
                                     class="w-8 h-8 rounded-full mx-auto">
-                                <h3 class="mt-1">{{players.1.2.nickname}}</h5>
+                                <h3 class="mt-1"onclick="redirect('{% url 'home' %}player/{{ players.1.2.nickname }}')">{{players.1.2.nickname}}</h5>
                                     <img src="../static/images/flags/{{players.1.2.nationality}}.png"
                                         class="w-4 h-4 mx-auto" style="border-radius: 0;margin-top:5px">
                             </div>
                             <div class="player text-center">
                                 <img src="../static/images/player/head/{{players.1.3.nickname}}.webp"
                                     class="w-8 h-8 rounded-full mx-auto">
-                                <h3 class="mt-1">{{players.1.3.nickname}}</h5>
+                                <h3 class="mt-1"onclick="redirect('{% url 'home' %}player/{{ players.1.3.nickname }}')">{{players.1.3.nickname}}</h5>
                                     <img src="../static/images/flags/{{players.1.3.nationality}}.png"
                                         class="w-4 h-4 mx-auto" style="border-radius: 0;margin-top:5px">
                             </div>
                             <div class="player text-center">
                                 <img src="../static/images/player/head/{{players.1.4.nickname}}.webp"
                                     class="w-8 h-8 rounded-full mx-auto">
-                                <h3 class="mt-1">{{players.1.4.nickname}}</h5>
+                                <h3 class="mt-1"onclick="redirect('{% url 'home' %}player/{{ players.1.4.nickname }}')">{{players.1.4.nickname}}</h5>
                                     <img src="../static/images/flags/{{players.1.4.nationality}}.png"
                                         class="w-4 h-4 mx-auto" style="border-radius: 0;margin-top:5px">
                             </div>
@@ -244,35 +244,35 @@
                             <div class="player text-center">
                                 <img src="../static/images/player/head/{{players.2.0.nickname}}.webp"
                                     class="w-8 h-8 rounded-full mx-auto">
-                                <h3 class="mt-1">{{players.2.0.nickname}}</h5>
+                                <h3 class="mt-1"onclick="redirect('{% url 'home' %}player/{{ players.2.0.nickname }}')">{{players.2.0.nickname}}</h5>
                                     <img src="../static/images/flags/{{players.2.0.nationality}}.png"
                                         class="w-4 h-4 mx-auto" style="border-radius: 0;margin-top:5px">
                             </div>
                             <div class="player text-center">
                                 <img src="../static/images/player/head/{{players.2.1.nickname}}.webp"
                                     class="w-8 h-8 rounded-full mx-auto">
-                                <h3 class="mt-1">{{players.2.1.nickname}}</h5>
+                                <h3 class="mt-1"onclick="redirect('{% url 'home' %}player/{{ players.2.1.nickname }}')">{{players.2.1.nickname}}</h5>
                                     <img src="../static/images/flags/{{players.2.1.nationality}}.png"
                                         class="w-4 h-4 mx-auto" style="border-radius: 0;margin-top:5px">
                             </div>
                             <div class="player text-center">
                                 <img src="../static/images/player/head/{{players.0.2.nickname}}.webp"
                                     class="w-8 h-8 rounded-full mx-auto">
-                                <h3 class="mt-1">{{players.2.2.nickname}}</h5>
+                                <h3 class="mt-1"onclick="redirect('{% url 'home' %}player/{{ players.2.2.nickname }}')">{{players.2.2.nickname}}</h5>
                                     <img src="../static/images/flags/{{players.2.2.nationality}}.png"
                                         class="w-4 h-4 mx-auto" style="border-radius: 0;margin-top:5px">
                             </div>
                             <div class="player text-center">
                                 <img src="../static/images/player/head/{{players.2.3.nickname}}.webp"
                                     class="w-8 h-8 rounded-full mx-auto">
-                                <h3 class="mt-1">{{players.2.3.nickname}}</h5>
+                                <h3 class="mt-1"onclick="redirect('{% url 'home' %}player/{{ players.2.3.nickname }}')">{{players.2.3.nickname}}</h5>
                                     <img src="../static/images/flags/{{players.2.3.nationality}}.png"
                                         class="w-4 h-4 mx-auto" style="border-radius: 0;margin-top:5px">
                             </div>
                             <div class="player text-center">
                                 <img src="../static/images/player/head/{{players.2.4.nickname}}.webp"
                                     class="w-8 h-8 rounded-full mx-auto">
-                                <h3 class="mt-1">{{players.2.4.nickname}}</h5>
+                                <h3 class="mt-1"onclick="redirect('{% url 'home' %}player/{{ players.2.4.nickname }}')">{{players.2.4.nickname}}</h5>
                                     <img src="../static/images/flags/{{players.2.4.nationality}}.png"
                                         class="w-4 h-4 mx-auto" style="border-radius: 0;margin-top:5px">
                             </div>
@@ -295,27 +295,27 @@
                         <div class="players">
                             <div class="player text-center">
                                 <img src="../static/images/player/head/{{players|index_3:forloop.counter0|index:0|getkey:"nickname"}}.webp" class="w-8 h-8 rounded-full mx-auto">
-                                <h3 class="mt-1">{{players|index_3:forloop.counter0|index:0|getkey:"nickname"}}</h5>
+                                <h3 class="mt-1"onclick="redirect('{% url 'home' %}player/{{players|index_3:forloop.counter0|index:0|getkey:'nickname'}}')">{{players|index_3:forloop.counter0|index:0|getkey:"nickname"}}</h5>
                                     <img src="../static/images/flags/{{players|index_3:forloop.counter0|index:0|getkey:"nationality"}}.png" class="w-4 h-4 mx-auto" style="border-radius: 0;margin-top:5px">
                             </div>
                             <div class="player text-center">
                                 <img src="../static/images/player/head/{{players|index_3:forloop.counter0|index:1|getkey:"nickname"}}.webp" class="w-8 h-8 rounded-full mx-auto">
-                                <h3 class="mt-1">{{players|index_3:forloop.counter0|index:1|getkey:"nickname"}}</h5>
+                                <h3 class="mt-1"onclick="redirect('{% url 'home' %}player/{{players|index_3:forloop.counter0|index:1|getkey:'nickname'}}')">{{players|index_3:forloop.counter0|index:1|getkey:"nickname"}}</h5>
                                     <img src="../static/images/flags/{{players|index_3:forloop.counter0|index:1|getkey:"nationality"}}.png" class="w-4 h-4 mx-auto" style="border-radius: 0;margin-top:5px">
                             </div>
                             <div class="player text-center">
                                 <img src="../static/images/player/head/{{players|index_3:forloop.counter0|index:2|getkey:"nickname"}}.webp" class="w-8 h-8 rounded-full mx-auto">
-                                <h3 class="mt-1">{{players|index_3:forloop.counter0|index:2|getkey:"nickname"}}</h5>
+                                <h3 class="mt-1"onclick="redirect('{% url 'home' %}player/{{players|index_3:forloop.counter0|index:2|getkey:'nickname'}}')">{{players|index_3:forloop.counter0|index:2|getkey:"nickname"}}</h5>
                                     <img src="../static/images/flags/{{players|index_3:forloop.counter0|index:2|getkey:"nationality"}}.png" class="w-4 h-4 mx-auto" style="border-radius: 0;margin-top:5px">
                             </div>
                             <div class="player text-center">
                                 <img src="../static/images/player/head/{{players|index_3:forloop.counter0|index:3|getkey:"nickname"}}.webp" class="w-8 h-8 rounded-full mx-auto">
-                                <h3 class="mt-1">{{players|index_3:forloop.counter0|index:3|getkey:"nickname"}}</h5>
+                                <h3 class="mt-1"onclick="redirect('{% url 'home' %}player/{{players|index_3:forloop.counter0|index:3|getkey:'nickname'}}')">{{players|index_3:forloop.counter0|index:3|getkey:"nickname"}}</h5>
                                     <img src="../static/images/flags/{{players|index_3:forloop.counter0|index:3|getkey:"nationality"}}.png" class="w-4 h-4 mx-auto" style="border-radius: 0;margin-top:5px">
                             </div>
                             <div class="player text-center">
                                 <img src="../static/images/player/head/{{players|index_3:forloop.counter0|index:4|getkey:"nickname"}}.webp" class="w-8 h-8 rounded-full mx-auto">
-                                <h3 class="mt-1">{{players|index_3:forloop.counter0|index:4|getkey:"nickname"}}</h5>
+                                <h3 class="mt-1"onclick="redirect('{% url 'home' %}player/{{players|index_3:forloop.counter0|index:4|getkey:'nickname'}}')">{{players|index_3:forloop.counter0|index:4|getkey:"nickname"}}</h5>
                                     <img src="../static/images/flags/{{players|index_3:forloop.counter0|index:4|getkey:"nationality"}}.png" class="w-4 h-4 mx-auto" style="border-radius: 0;margin-top:5px">
                             </div>
                         </div>
@@ -326,8 +326,10 @@
             </div>
 
             <!-- 右边部分：新闻 -->
-            <div class="col-span-2 bg-white p-4 shadow-lg rounded-lg">
-                <h2 class="text-xl font-bold mb-4">相关新闻</h2>
+            <div class="col-span-2 bg-white p-4 shadow-lg rounded-lg" style="padding: 0;">
+                
+                <h2 class="text-xl font-bold mb-4" style="background-color:rgb(247, 148, 30);width: 100%;text-align: center;">相关新闻</h2>
+                
                 <div class="grid grid-cols-1 gap-6">
                     <div
                         class="relative shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl rounded-lg">

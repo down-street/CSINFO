@@ -59,7 +59,7 @@
                         <h4 href="main.html" class="nav_button">选手</h4>
                         <div class="dropdown_content">
                             <a href="{% url 'home' %}player_ranking">选手排行</a>
-                            <a href="{% url 'home' %}player/advent">每周选手</a>
+                            <a href="{% url 'home' %}player/ZywOo">每周选手</a>
                         </div>
                     </div>
                     <div class="nav_li">
@@ -117,8 +117,11 @@
     <script src="{% static 'js/side_menu.js' %}"></script>
     <script src="{% static 'js/team_rank.js' %}"></script>
     <div class="container mx-auto px-4 py-8">
-        <div class="grid grid-cols-8 gap-8">
+        <div class="grid grid-cols-10 gap-8">
             <!-- 左边部分：排名 -->
+            <div class="col-span-1" style="background-color: rgb(247, 148, 30);">
+
+            </div>
             <div class="col-span-6 bg-white p-4 shadow-lg rounded-lg">
 
                 <div class="ranking-container space-y-4 justify-center " style="margin-bottom: 30px;">
@@ -187,10 +190,10 @@
                     <button class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 transition-colors video-play" data-video-url="">视频回放</button>
                 </div>
             </div>
-
+            <div class="col-span-1" style="background-color: rgb(247, 148, 30);"></div>
             <!-- 右边部分：新闻 -->
             <div class="col-span-2 bg-white p-4 shadow-lg rounded-lg">
-                <h2 class="text-xl font-bold mb-4">相关新闻</h2>
+                <h2 class="text-xl font-bold mb-4" style="background-color:rgb(247, 148, 30);width: 100%;text-align: center;">相关新闻</h2>
                 <div class="grid grid-cols-1 gap-6">
                     <div
                         class="relative shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl rounded-lg">

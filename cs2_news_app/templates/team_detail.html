@@ -59,7 +59,7 @@
                         <h4 href="main.html" class="nav_button">选手</h4>
                         <div class="dropdown_content">
                             <a href="{% url 'home' %}player_ranking">选手排行</a>
-                            <a href="{% url 'home' %}player/advent">每周选手</a>
+                            <a href="{% url 'home' %}player/ZywOo">每周选手</a>
                         </div>
                     </div>
                     <div class="nav_li">
@@ -116,6 +116,7 @@
     </script>
     <script src="{% static 'js/side_menu.js' %}"></script>
     <script src="{% static 'js/team_rank.js' %}"></script>
+    <script src="{% static 'js/player_team_mainpage.js' %}" type="text/javascript"></script>
     <div class="container mx-auto px-4 py-8">
         <div class="grid grid-cols-8 gap-8">
             <!-- 左边部分：排名 -->
@@ -133,7 +134,7 @@
                     <div class="team-points text-lg font-semibold">团队成员:</div>
                     <div class="flex container justify-between" style="margin: 0;padding: 0;">
 
-                        <div class="player text-center" style="margin: 0;">
+                        <div class="player text-center" style="margin: 0;"onclick="redirect('{% url 'home' %}player/{{players.0.nickname}}')">
                             <img src="../../static/images/player/head/{{players.0.nickname}}.webp" class="  mx-auto">
                             <div
                                 style="display: flex;width: 80%;background-color: rgb(137, 169, 176);align-items: center;flex-direction: column;margin: 10%;border-radius: 5px;">
@@ -143,7 +144,7 @@
                                         style="border-radius: 0;margin-top:5px;margin-bottom: 5px;">
                             </div>
                         </div>
-                        <div class="player text-center" style="margin: 0;">
+                        <div class="player text-center" style="margin: 0;"onclick="redirect('{% url 'home' %}player/{{players.1.nickname}}')">
                             <img src="../../static/images/player/head/{{players.1.nickname}}.webp" class="  mx-auto">
                             <div
                                 style="display: flex;width: 80%;background-color: rgb(137, 169, 176);align-items: center;flex-direction: column;margin: 10%;border-radius: 5px;">
@@ -152,7 +153,7 @@
                                     class="w-6 h-6 mx-auto" style="border-radius: 0;margin-top:5px;margin-bottom: 5px;">
                             </div>
                         </div>
-                        <div class="player text-center" style="margin: 0;">
+                        <div class="player text-center" style="margin: 0;"onclick="redirect('{% url 'home' %}player/{{players.2.nickname}}')">
                             <img src="../../static/images/player/head/{{players.2.nickname}}.webp" class="  mx-auto">
                             <div
                                 style="display: flex;width: 80%;background-color: rgb(137, 169, 176);align-items: center;flex-direction: column;margin: 10%;border-radius: 5px;">
@@ -161,7 +162,7 @@
                                     class="w-6 h-6 mx-auto" style="border-radius: 0;margin-top:5px;margin-bottom: 5px;">
                             </div>
                         </div>
-                        <div class="player text-center" style="margin: 0;">
+                        <div class="player text-center" style="margin: 0;"onclick="redirect('{% url 'home' %}player/{{players.3.nickname}}')">
                             <img src="../../static/images/player/head/{{players.3.nickname}}.webp" class="  mx-auto">
                             <div
                                 style="display: flex;width: 80%;background-color: rgb(137, 169, 176);align-items: center;flex-direction: column;margin: 10%;border-radius: 5px;">
@@ -170,7 +171,7 @@
                                     class="w-6 h-6 mx-auto" style="border-radius: 0;margin-top:5px;margin-bottom: 5px;">
                             </div>
                         </div>
-                        <div class="player text-center" style="margin: 0;">
+                        <div class="player text-center" style="margin: 0;"onclick="redirect('{% url 'home' %}player/{{players.4.nickname}}')">
                             <img src="../../static/images/player/head/{{players.4.nickname}}.webp" class="  mx-auto">
                             <div
                                 style="display: flex;width: 80%;background-color: rgb(137, 169, 176);align-items: center;flex-direction: column;margin: 10%;border-radius: 5px;">
@@ -227,7 +228,7 @@
 
             <!-- 右边部分：新闻 -->
             <div class="col-span-2 bg-white p-4 shadow-lg rounded-lg">
-                <h2 class="text-xl font-bold mb-4">相关新闻</h2>
+                <h2 class="text-xl font-bold mb-4" style="background-color:rgb(247, 148, 30);width: 100%;text-align: center;">相关新闻</h2>
                 <div class="grid grid-cols-1 gap-6">
                     <div
                         class="relative shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl rounded-lg">
