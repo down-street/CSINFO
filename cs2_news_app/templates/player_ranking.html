@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>队伍排名</title>
+    <meta charset="utf-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% load static %}
+    {% load extra %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/component/whole_page.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/component/change_button.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/component/nav_bar.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/component/flex_center_box.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/component/layer_block.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/component/back_to_top_btn.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/component/more_matches_btn.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/component/carousel.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/cursor_global.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/component/team_rank.css' %}">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/team_rank.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="{% static 'js/player_team_mainpage.js' %}" type="text/javascript"></script>
+
+</head>
+
+<body>
+    <button id="back-to-top"
+        class="back-to-top-btn bg-gray-800 text-white p-2 rounded-full fixed bottom-4 right-4 transition-colors duration-300"
+        style="text-decoration: none;">
+        <i class=" fas fa-arrow-up"></i>
+    </button>
+    <script src="{% static 'js/back_to_top_btn.js' %}" type="text/javascript"></script>
+
+    <!-- 导航栏 -->
+    <div id="nav_block" class="block flex_center_box">
+        <div class="nav flex_center_box">
+            <div class="nav_ul">
+                <div class="nav_logo">
+                    <img src="../static/images/csinfo-logo.png" alt="Logo" id="nav_logo_img">
+                </div>
+                <div class="nav_wing">
+
+                    <div class="nav_li">
+                        <h4  class="nav_button"><a href="{% url 'home' %}" style="text-decoration: none;">首页</a></h4>
+                    </div>
+                    <div class="nav_li">
+                        <h4 class="nav_button"><a href="{% url 'home' %}all_news" style="text-decoration: none;">新闻</a></h4>
+                    </div>
+                    <div class="nav_li">
+                        <h4  class="nav_button"><a href="{% url 'home' %}all_matches" style="text-decoration: none;">赛事</a></h4>
+                    </div>
+                    <div class="nav_li">
+                        <h4 href="main.html" class="nav_button">选手</h4>
+                        <div class="dropdown_content">
+                            <a href="{% url 'home' %}player_ranking">选手排行</a>
+                            <a href="{% url 'home' %}player/advent">每周选手</a>
+                        </div>
+                    </div>
+                    <div class="nav_li">
+                        <h4 href="main.html#choose_blocks" class="nav_button">队伍</h4>
+                        <div class="dropdown_content">
+                            <a href="{% url 'home' %}team_ranking">队伍排行</a>
+                            <a href="{% url 'home' %}team/Vitality">每周战队</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav_toggle" id="nav_toggle">&#9776;</div>
+            </div>
+
+        </div>
+    </div>
+    <div class="nav_menu" id="nav_menu">
+        <div class="nav_menu_item">
+            <a href="{% url 'home' %}" class="nav_item_button" style="text-decoration: none;">首页</a>
+        </div>
+        <div class="nav_menu_item">
+            <a href="{% url 'home' %}all_news" class="nav_item_button" style="text-decoration: none;">新闻</a>
+        </div>
+        <div class="nav_menu_item">
+            <a href="{% url 'home' %}all_matches" class="nav_item_button" style="text-decoration: none;">赛事</a>
+        </div>
+        <div class="nav_menu_item">
+            <a href="{% url 'home' %}player_ranking" class="nav_item_button">选手</a>
+        </div>
+        <div class="nav_menu_item">
+            <a href="{% url 'home' %}team_ranking" class="nav_item_button">队伍 </a>
+        </div>
+    </div>
+    <script src="{% static 'js/side_menu.js' %}"></script>
+    <script src="{% static 'js/team_rank.js' %}"></script>
+    <div class="title-container">
+        <h1>选手排名</h1>
+    </div>
+    <!-- 主体内容 -->
+    <script src="{% static 'js/team_rank.js' %}" type="text/javascript"></script>
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+
+            var images = document.getElementsByTagName('img');
+
+            for (var i = 0; i < images.length; i++) {
+                var img = images[i];
+                var id = img.id;
+                //console.log(id)
+                // 检查 id 是否以 "team" 开头
+                if (id.startsWith('team')) {
+                    var teamName = id.substring(4); // 获取 "team" 之后的部分
+                    console.log(teamName)
+                    var webpPath = `../static/images/${teamName}.webp`;
+                    var svgPath = `../static/images/${teamName}.svg`;
+
+                    loadImage(id, webpPath, svgPath);
+                }
+            }
+        });
+    </script>
+    <div class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-8 gap-8">
+            <!-- 左边部分：排名 -->
+            <div class="col-span-6 bg-white p-4 shadow-lg rounded-lg">
+
+                <div class="ranking-container space-y-4">
+
+                    <div class="team" onclick="redirect('{% url 'home' %}player/{{ players.0.nickname }}')">
+                        <div class="team-header flex items-center justify-between">
+                            <div class="left flex items-center space-x-2" onclick="redirect('{% url 'home' %}player/{{ players.0.nickname }}')">
+                                <div class="rank text-lg font-bold" style="color: gold;">#1</div>
+                                <div class="team-logo">
+                                    <img src="../static/images/player/head/{{players.0.nickname}}.webp" alt="FaZe"
+                                        class="w-8 h-8">
+                                </div>
+                                <div class="team-name text-lg font-bold">{{players.0.nickname}}</div>
+
+                            </div>
+                            <div class="right">
+                                <div class="team-logo">
+                                    <img id="team{{players.0.team.name}}" alt="FaZe" class="w-8 h-8">
+                                </div>
+                                <div class="team-points text-lg font-semibold">{{players.0.rating}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team" onclick="redirect('{% url 'home' %}player/{{ players.1.nickname }}')">
+                        <div class="team-header flex items-center justify-between">
+                            <div class="left flex items-center space-x-2" onclick="redirect('{% url 'home' %}player/{{ players.1.nickname }}')">
+                                <div class="rank text-lg font-bold" style="color: silver;">#2</div>
+                                <div class="team-logo">
+                                    <img src="../static/images/player/head/{{players.1.nickname}}.webp" alt="FaZe"
+                                        class="w-8 h-8">
+                                </div>
+                                <div class="team-name text-lg font-bold">{{players.1.nickname}}</div>
+
+                            </div>
+                            <div class="right">
+                                <div class="team-logo">
+                                    <img id="team{{players.1.team.name}}" alt="FaZe" class="w-8 h-8">
+                                </div>
+                                <div class="team-points text-lg font-semibold">{{players.1.rating}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team" onclick="redirect('{% url 'home' %}player/{{ players.2.nickname }}')">
+                        <div class="team-header flex items-center justify-between">
+                            <div class="left flex items-center space-x-2" onclick="redirect('{% url 'home' %}player/{{ players.2.nickname }}')">
+                                <div class="rank text-lg font-bold" style="color: brown;">#3</div>
+                                <div class="team-logo">
+                                    <img src="../static/images/player/head/{{players.2.nickname}}.webp" alt="FaZe"
+                                        class="w-8 h-8">
+                                </div>
+                                <div class="team-name text-lg font-bold">{{players.2.nickname}}</div>
+
+                            </div>
+                            <div class="right">
+                                <div class="team-logo">
+                                    <img id="team{{players.2.team.name}}" alt="FaZe" class="w-8 h-8">
+                                </div>
+                                <div class="team-points text-lg font-semibold">{{players.2.rating}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    {%for player in playerslft%}
+                    <div class="team" onclick="redirect('{% url 'home' %}player/{{ player.nickname }}')">
+                        <div class="team-header flex items-center justify-between">
+                            <div class="left flex items-center space-x-2">
+                                <div class="rank text-lg font-bold">#{{forloop.counter0|add:4}}</div>
+                                <div class="team-logo">
+                                    <div class="team-logo">
+                                        <img src="../static/images/player/head/{{player.nickname}}.webp" alt="FaZe"
+                                            class="w-8 h-8">
+                                    </div>
+                                </div>
+                                <div class="team-name text-lg font-bold">{{player.nickname}}</div>
+                            </div>
+                            <div class="right">
+                                <div class="team-logo">
+                                    <img id="team{{ player.team.name}}" alt="FaZe" class="w-8 h-8">
+                                </div>
+                                <div class="team-points text-sm font-semibold">{{player.rating}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    {%endfor%}
+                    <!-- 继续添加其他队伍 -->
+                </div>
+            </div>
+
+            <!-- 右边部分：新闻 -->
+            <div class="col-span-2 bg-white p-4 shadow-lg rounded-lg">
+                <h2 class="text-xl font-bold mb-4">相关新闻</h2>
+                <div class="grid grid-cols-1 gap-6">
+                    <div
+                        class="relative shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl rounded-lg">
+                        <a href="{% url 'news_detail' news_3.id %}" class="block group w-full"
+                            style="color: inherit; text-decoration: none;">
+                            <div class="overflow-hidden h-40 rounded-t-lg">
+                                <img src="{{ news_3.images.first.image.url }}"
+                                    class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110 rounded-t-lg">
+                            </div>
+                            <div class="p-2 bg-white rounded-b-lg">
+                                <h1 class="text-lg font-bold">{{ news_3.title }}</h1>
+                                <p class="mt-1 text-gray-600">{{ news_3.date|date:"Y-m-d" }}</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div
+                        class="relative shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl rounded-lg">
+                        <a href="{% url 'news_detail' news_4.id %}" class="block group w-full"
+                            style="color: inherit; text-decoration: none;">
+                            <div class="overflow-hidden h-40 rounded-t-lg">
+                                <img src="{{ news_4.images.first.image.url }}"
+                                    class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110 rounded-t-lg">
+                            </div>
+                            <div class="p-2 bg-white rounded-b-lg">
+                                <h1 class="text-lg font-bold">{{ news_4.title }}</h1>
+                                <p class="mt-1 text-gray-600">{{ news_4.date|date:"Y-m-d" }}</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div
+                        class="relative shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl rounded-lg">
+                        <a href="{% url 'news_detail' news_1.id %}" class="block group w-full"
+                            style="color: inherit; text-decoration: none;">
+                            <div class="overflow-hidden h-40 rounded-t-lg">
+                                <img src="{{ news_1.images.first.image.url }}"
+                                    class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110 rounded-t-lg">
+                            </div>
+                            <div class="p-2 bg-white rounded-b-lg">
+                                <h1 class="text-lg font-bold">{{ news_1.title }}</h1>
+                                <p class="mt-1 text-gray-600">{{ news_1.date|date:"Y-m-d" }}</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="flex items-center justify-center mt-4">
+                    <a href="{% url 'all_news' %}"
+                        class="bg-gray-800 text-white font-semibold py-2 px-4 text-sm rounded transition duration-300 ease-in-out hover:bg-orange-600 no-underline">
+                        全部新闻
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="bottom_block" class="block flex_center_box_v mt-8">
+        <p>人机交互小组</p>
+        <p>小组成员：2153293 苏子言 2153601 洪杨 2151531 栾佳浩</p>
+        <p>2152969 李咏桓 2152594 杨举列</p>
+    </div>
+</body>
+
+</html>

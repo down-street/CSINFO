@@ -1,10 +1,11 @@
+import json
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
 from .models import News, Match,Team,Player
-
+from django.core import serializers
 def index(request):
     news_ids = range(1, 7)  # Adjust numbers as necessary
     news_items = News.objects.filter(id__in=news_ids)
@@ -18,7 +19,9 @@ def index(request):
 
     # Combine news dictionary with other context
     player=Player.objects.order_by('-rating')[:10]
-    context = {**news_dict, 'grouped_matches': grouped_matches, 'initial_group_index': initial_group_index,'player':player}
+    team = Team.objects.order_by('ranking')[:8]
+    team_s=serializers.serialize('json',team)
+    context = {**news_dict, 'grouped_matches': grouped_matches, 'initial_group_index': initial_group_index,'player':player,'team':team,'teamx':team_s}
     return render(request, 'main.html', context)
 
 def news_detail(request, news_id):
@@ -64,23 +67,35 @@ def all_news(request):
 
     return render(request, 'all_news.html', {'all_news': all_news, 'dates': dates})
 
-def player_ranking(request):
-    return render(request, 'player_ranking.html')
 
 def team_ranking(request):
     news_1 = News.objects.filter(id=1).first()
     news_2 = News.objects.filter(id=2).first()
     news_3 = News.objects.filter(id=3).first()
     news_4 = News.objects.filter(id=4).first()
+    team = Team.objects.order_by('ranking')[:10]
+    teamc = Team.objects.order_by('ranking')[3:10]
+    players = Player.objects.all()
+    ret_players=[]
+    for i in range(0,10):
+        team_players=[]
+        print(team[i].name)
+        for player in players:
+            if player.team.name== team[i].name:
+                team_players.append(player)
+                
+        ret_players.append(team_players)
+    team_s=serializers.serialize('json',team)
+    return render(request, 'team_ranking.html', { 'news_1': news_1,'news_2': news_2,'news_3': news_3,'news_4': news_4,'players':ret_players,'team':team,'teamlft':teamc,'teamx':team_s})
 
-    return render(request, 'team_ranking.html', 
-        {    
-            'news_1': news_1,
-            'news_2': news_2,
-            'news_3': news_3,
-            'news_4': news_4
-        }
-    )
+def player_ranking(request):
+    news_1 = News.objects.filter(id=1).first()
+    news_2 = News.objects.filter(id=2).first()
+    news_3 = News.objects.filter(id=3).first()
+    news_4 = News.objects.filter(id=4).first()
+    player = Player.objects.order_by('-rating')[:30]
+    lft=Player.objects.order_by('-rating')[3:30]
+    return render(request, 'player_ranking.html', { 'news_1': news_1,'news_2': news_2,'news_3': news_3,'news_4': news_4,'players':player, 'playerslft':lft})
 
 def all_matches(request):
     matches = Match.objects.all().order_by('time')
@@ -93,11 +108,40 @@ def all_matches(request):
     }
     return render(request, 'all_matches.html', context)
 
-def team_detail(request, team_id):
-    team = get_object_or_404(Team, id=team_id)
-    player = Team.objects.get(team=team.name)
+def team_detail(request, team_name):
+    team = get_object_or_404(Team, name=team_name)
+    players = Player.objects.filter(team=team)
+    news_1 = News.objects.filter(id=1).first()
+    news_2 = News.objects.filter(id=2).first()
+    news_3 = News.objects.filter(id=3).first()
+    news_4 = News.objects.filter(id=4).first()
     return render(request, 'team_detail.html', {
+        'news_1': news_1,
+        'news_2': news_2,
+        'news_3': news_3,
+        'news_4': news_4,
         'team': team,
-        'player':player
+        'players':players
     })
 
+def player_detail(request, nickname):
+
+    players = Player.objects.all().order_by('-rating')
+    for index, player in enumerate(players):
+        player.ranking = index + 1  # Rankings start from 1
+        player.save()
+    player = get_object_or_404(Player, nickname=nickname)
+    print(player.team.name)
+    team=get_object_or_404(Team, name=player.team.name)
+    news_1 = News.objects.filter(id=1).first()
+    news_2 = News.objects.filter(id=2).first()
+    news_3 = News.objects.filter(id=3).first()
+    news_4 = News.objects.filter(id=4).first()
+    return render(request, 'player_detail.html', {
+        'player':player,
+        'team':team,
+        'news_1': news_1,
+        'news_2': news_2,
+        'news_3': news_3,
+        'news_4': news_4,
+    })

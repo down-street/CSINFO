@@ -1,3 +1,6 @@
-function redirect(x) {
-    window.location.href = 'https://google.com/'+x;
+function redirect(x) 
+{
+    console.error('c')
+    window.location.href = x;
+    event.stopPropagation();
 }

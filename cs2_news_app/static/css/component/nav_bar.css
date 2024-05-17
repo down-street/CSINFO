@@ -129,7 +129,11 @@
     padding-left: 35px;
 	border:none;
 }
-
+.nav_button .a:hover {
+	color: white;
+	text-align: center;
+	text-decoration: none;
+}
 
 .dropdown_content {
     display: none;

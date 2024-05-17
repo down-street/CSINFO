@@ -6,3 +6,19 @@ function toggleDetails(element) {
         players.style.display = 'flex';
     }
 }
+function loadImage(imageId, webpSrc, fallbackSrc) {
+    console.log(imageId)
+    var imgElements = document.querySelectorAll(`[id='${CSS.escape(imageId)}']`);
+        
+    imgElements.forEach(function(imgElement) {
+        console.log('x')
+        var img = new Image();
+        img.onload = function() {
+            imgElement.src = webpSrc;
+        };
+        img.onerror = function() {
+            imgElement.src = fallbackSrc;
+        };
+        img.src = webpSrc;
+    });
+}

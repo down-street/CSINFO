@@ -11,5 +11,6 @@ urlpatterns = [
     path('team_ranking/',views.team_ranking,name='team_ranking'),
     path('player_ranking/',views.player_ranking,name='player_ranking'),
     path('all_matches/', views.all_matches, name='all_matches'),  # 新增的“所有比赛”页面
-    path('team/<int:team_id>/', views.team_detail, name='team_detail')
+    path('team/<str:team_name>/', views.team_detail, name='team_detail'),
+    path('player/<str:nickname>/', views.player_detail, name='player_detail')
 ]
