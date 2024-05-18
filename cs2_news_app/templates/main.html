@@ -110,43 +110,51 @@
 
 
     <!-- 导航栏 -->
-    <div id="nav_block" class="block flex_center_box">
-        <div class="nav flex_center_box">
-            <div class="nav_ul">
-                <div class="nav_logo">
-                    <img src="../static/images/csinfo-logo.png" alt="Logo" id="nav_logo_img">
-                </div>
-                <div class="nav_wing">
-
-                    <div class="nav_li">
-                        <h4  class="nav_button"><a href="{% url 'home' %}" style="text-decoration: none;">首页</a></h4>
+    <!-- 导航栏 -->
+    <!-- 导航栏 -->
+        <div id="nav_block" class="block flex_center_box">
+            <div class="nav flex_center_box">
+                <div class="nav_ul">
+                    <div class="nav_logo">
+                        <img src="../static/images/csinfo-logo.png" alt="Logo" id="nav_logo_img">
                     </div>
-                    <div class="nav_li">
-                        <h4 class="nav_button"><a href="{% url 'home' %}all_news" style="text-decoration: none;">新闻</a></h4>
-                    </div>
-                    <div class="nav_li">
-                        <h4  class="nav_button"><a href="{% url 'home' %}all_matches" style="text-decoration: none;">赛事</a></h4>
-                    </div>
-                    <div class="nav_li">
-                        <h4 href="main.html" class="nav_button">选手</h4>
-                        <div class="dropdown_content">
-                            <a href="{% url 'home' %}player_ranking">选手排行</a>
-                            <a href="{% url 'home' %}/ZywOo">每周选手</a>
+                    <div class="nav_wing">
+                        <div class="nav_li">
+                            <h4 class="nav_button">
+                                <a href="{% url 'home' %}" style="text-decoration: none; color: inherit;">首页</a>
+                            </h4>
+                        </div>
+                        <div class="nav_li">
+                            <h4 class="nav_button">
+                                <a href="{% url 'home' %}all_news" style="text-decoration: none; color: inherit;">新闻</a>
+                            </h4>
+                        </div>
+                        <div class="nav_li">
+                            <h4 class="nav_button">
+                                <a href="{% url 'home' %}all_matches" style="text-decoration: none; color: inherit;">赛事</a>
+                            </h4>
+                        </div>
+                        <div class="nav_li">
+                            <h4 href="main.html" class="nav_button">选手</h4>
+                            <div class="dropdown_content">
+                                <a href="{% url 'home' %}player_ranking" style="text-decoration: none; color: #ffffff;">选手排行</a>
+                                <a href="{% url 'home' %}/ZywOo" style="text-decoration: none; color: #ffffff;">每周选手</a>
+                            </div>
+                        </div>
+                        <div class="nav_li">
+                            <h4 href="main.html#choose_blocks" class="nav_button">队伍</h4>
+                            <div class="dropdown_content">
+                                <a href="{% url 'home' %}team_ranking" style="text-decoration: none; color: #ffffff;">队伍排行</a>
+                                <a href="{% url 'home' %}team/Vitality" style="text-decoration: none; color: #ffffff;">每周战队</a>
+                            </div>
                         </div>
                     </div>
-                    <div class="nav_li">
-                        <h4 href="main.html#choose_blocks" class="nav_button">队伍</h4>
-                        <div class="dropdown_content">
-                            <a href="{% url 'home' %}team_ranking">队伍排行</a>
-                            <a href="{% url 'home' %}team/Vitality">每周战队</a>
-                        </div>
-                    </div>
+                    <div class="nav_toggle" id="nav_toggle">&#9776;</div>
                 </div>
-                <div class="nav_toggle" id="nav_toggle">&#9776;</div>
             </div>
-
         </div>
-    </div>
+
+
 
 
     <div class="nav_menu" id="nav_menu">
@@ -181,15 +189,15 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 mb-8">
             <div
-                class="relative col-span-1 lg:col-span-3 flex shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl rounded-lg">
-                <a href="{% url 'news_detail' news_1.id %}" class="block group w-full"
+                class="relative col-span-1 lg:col-span-3 flex shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl rounded-lg h-80">
+                <a href="{% url 'news_detail' news_1.id %}" class="block w-full h-full"
                     style="color: inherit; text-decoration: none;">
-                    <div class="flex h-64">
-                        <div class="w-2/3 overflow-hidden rounded-l-lg">
+                    <div class="flex flex-col w-full h-full">
+                        <div class="w-full h-2/3 overflow-hidden rounded-t-lg">
                             <img src="{{ news_1.images.first.image.url }}"
-                                class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110 rounded-l-lg">
+                                class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110 rounded-t-lg">
                         </div>
-                        <div class="w-1/3 p-4 bg-white flex flex-col justify-center rounded-r-lg">
+                        <div class="w-full h-1/3 p-4 bg-white flex flex-col justify-center rounded-b-lg">
                             <h1 class="text-xl font-bold">{{ news_1.title }}</h1>
                             <p class="mt-2 text-gray-600">{{ news_1.date|date:"Y-m-d" }}</p>
                         </div>
@@ -198,15 +206,15 @@
             </div>
 
             <div
-                class="relative col-span-1 lg:col-span-2 flex shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl rounded-lg">
-                <a href="{% url 'news_detail' news_2.id %}" class="block group w-full"
+                class="relative col-span-1 lg:col-span-2 flex shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl rounded-lg h-80">
+                <a href="{% url 'news_detail' news_2.id %}" class="block w-full h-full"
                     style="color: inherit; text-decoration: none;">
-                    <div class="flex h-64">
-                        <div class="w-2/3 overflow-hidden rounded-l-lg">
+                    <div class="flex flex-col w-full h-full">
+                        <div class="w-full h-2/3 overflow-hidden rounded-t-lg">
                             <img src="{{ news_2.images.first.image.url }}"
-                                class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110 rounded-l-lg">
+                                class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110 rounded-t-lg">
                         </div>
-                        <div class="w-1/3 p-4 bg-white flex flex-col justify-center rounded-r-lg">
+                        <div class="w-full h-1/3 p-4 bg-white flex flex-col justify-center rounded-b-lg">
                             <h1 class="text-xl font-bold">{{ news_2.title }}</h1>
                             <p class="mt-2 text-gray-600">{{ news_2.date|date:"Y-m-d" }}</p>
                         </div>
@@ -215,46 +223,52 @@
             </div>
 
             <div
-                class="relative col-span-1 lg:col-span-2 shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl rounded-lg">
-                <a href="{% url 'news_detail' news_3.id %}" class="block group w-full"
+                class="relative col-span-1 lg:col-span-2 shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl rounded-lg h-96">
+                <a href="{% url 'news_detail' news_3.id %}" class="block w-full h-full"
                     style="color: inherit; text-decoration: none;">
-                    <div class="overflow-hidden h-40 rounded-t-lg">
-                        <img src="{{ news_3.images.first.image.url }}"
-                            class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110 rounded-t-lg">
-                    </div>
-                    <div class="p-2 bg-white rounded-b-lg">
-                        <h1 class="text-lg font-bold">{{ news_3.title }}</h1>
-                        <p class="mt-1 text-gray-600">{{ news_3.date|date:"Y-m-d" }}</p>
+                    <div class="flex flex-col w-full h-full">
+                        <div class="w-full h-2/3 overflow-hidden rounded-t-lg">
+                            <img src="{{ news_3.images.first.image.url }}"
+                                class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110 rounded-t-lg">
+                        </div>
+                        <div class="w-full h-1/3 p-4 bg-white flex flex-col justify-center rounded-b-lg">
+                            <h1 class="text-lg font-bold">{{ news_3.title }}</h1>
+                            <p class="mt-1 text-gray-600">{{ news_3.date|date:"Y-m-d" }}</p>
+                        </div>
                     </div>
                 </a>
             </div>
 
             <div
-                class="relative col-span-1 lg:col-span-1 shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl rounded-lg">
-                <a href="{% url 'news_detail' news_4.id %}" class="block group w-full"
+                class="relative col-span-1 lg:col-span-1 shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl rounded-lg h-96">
+                <a href="{% url 'news_detail' news_4.id %}" class="block w-full h-full"
                     style="color: inherit; text-decoration: none;">
-                    <div class="overflow-hidden h-40 rounded-t-lg">
-                        <img src="{{ news_4.images.first.image.url }}"
-                            class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110 rounded-t-lg">
-                    </div>
-                    <div class="p-2 bg-white rounded-b-lg">
-                        <h1 class="text-lg font-bold">{{ news_4.title }}</h1>
-                        <p class="mt-1 text-gray-600">{{ news_4.date|date:"Y-m-d" }}</p>
+                    <div class="flex flex-col w-full h-full">
+                        <div class="w-full h-2/3 overflow-hidden rounded-t-lg">
+                            <img src="{{ news_4.images.first.image.url }}"
+                                class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110 rounded-t-lg">
+                        </div>
+                        <div class="w-full h-1/3 p-4 bg-white flex flex-col justify-center rounded-b-lg">
+                            <h1 class="text-lg font-bold">{{ news_4.title }}</h1>
+                            <p class="mt-1 text-gray-600">{{ news_4.date|date:"Y-m-d" }}</p>
+                        </div>
                     </div>
                 </a>
             </div>
 
             <div
-                class="relative col-span-1 lg:col-span-2 shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl rounded-lg">
-                <a href="{% url 'news_detail' news_1.id %}" class="block group w-full"
+                class="relative col-span-1 lg:col-span-2 shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl rounded-lg h-96">
+                <a href="{% url 'news_detail' news_5.id %}" class="block w-full h-full"
                     style="color: inherit; text-decoration: none;">
-                    <div class="overflow-hidden h-40 rounded-t-lg">
-                        <img src="{{ news_1.images.first.image.url }}"
-                            class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110 rounded-t-lg">
-                    </div>
-                    <div class="p-2 bg-white rounded-b-lg">
-                        <h1 class="text-lg font-bold">{{ news_1.title }}</h1>
-                        <p class="mt-1 text-gray-600">{{ news_1.date|date:"Y-m-d" }}</p>
+                    <div class="flex flex-col w-full h-full">
+                        <div class="w-full h-2/3 overflow-hidden rounded-t-lg">
+                            <img src="{{ news_5.images.first.image.url }}"
+                                class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110 rounded-t-lg">
+                        </div>
+                        <div class="w-full h-1/3 p-4 bg-white flex flex-col justify-center rounded-b-lg">
+                            <h1 class="text-lg font-bold">{{ news_5.title }}</h1>
+                            <p class="mt-1 text-gray-600">{{ news_5.date|date:"Y-m-d" }}</p>
+                        </div>
                     </div>
                 </a>
             </div>
@@ -262,7 +276,7 @@
 
         <div class="flex items-center justify-center">
             <a href="{% url 'all_news' %}"
-                class="bg-gray-800 text-white font-semibold py-2 px-4 text-sm rounded transition duration-300 ease-in-out hover:bg-orange-600 no-underline"
+                class="bg-gray-800 text-white font-semibold py-2 px-4 text-sm rounded transition duration-300 ease-in-out hover:bg-orange-600 no-underline "
                 style="text-decoration: none;">
                 全部新闻
             </a>
@@ -271,7 +285,7 @@
     </div>
 
 
-    <br></br><br></br>
+    <br></br>
 
 
 
@@ -357,7 +371,7 @@
             更多比赛
         </a>
     </div>
-
+    <br></br>
 
     <!--队伍和选手-->
     <style>
@@ -398,58 +412,65 @@
             <div class="ranking_title">
                 <div style="text-align: left;">近3个月rating</div>
             </div>
-            <div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect('{% url 'home' %}player/{{ player.0.nickname }}')">
+            <div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect(`{% url 'home' %}player/{{ player.0.nickname }}`)">
                 <img src="../static/images/player/head/{{player.0.nickname}}.webp" style="width: 40px;">
                 <div style="text-align: left;">1.{{player.0.nickname}}</div>
                 <div style="position: relative;">{{player.0.rating}}</div>
             </div>
-            <div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect('{% url 'home' %}player/{{ player.1.nickname }}')">
+            <div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect(`{% url 'home' %}player/{{ player.1.nickname }}`)">
                 <img src="../static/images/player/head/{{player.1.nickname}}.webp" style="width: 40px;">
                 <div style="text-align: left;">2.{{player.1.nickname}}</div>
                 <div style="position: relative;">{{player.1.rating}}</div>
             </div>
-            <div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect('{% url 'home' %}player/{{ player.2.nickname }}')">
+            <div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect(`{% url 'home' %}player/{{ player.2.nickname }}`)">
                 <img src="../static/images/player/head/{{player.2.nickname}}.webp" style="width: 40px;">
                 <div style="text-align: left;">3.{{player.2.nickname}}</div>
                 <div style="position: relative;">{{player.2.rating}}</div>
             </div>
-            <div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect('{% url 'home' %}player/{{ player.3.nickname }}')">
+            <div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect(`{% url 'home' %}player/{{ player.3.nickname }}`)">
                 <img src="../static/images/player/head/{{player.3.nickname}}.webp" style="width: 40px;">
                 <div style="text-align: left;">4.{{player.3.nickname}}</div>
                 <div style="position: relative;">{{player.3.rating}}</div>
             </div>
-            <div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect('{% url 'home' %}player/{{ player.4.nickname }}')">
+            <div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect(`{% url 'home' %}player/{{ player.4.nickname }}`)">
                 <img src="../static/images/player/head/{{player.4.nickname}}.webp" style="width: 40px;">
                 <div style="text-align: left;">5.{{player.4.nickname}}</div>
                 <div style="position: relative;">{{player.4.rating}}</div>
             </div>
-            <div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect('{% url 'home' %}player/{{ player.5.nickname }}')">
+            <div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect(`{% url 'home' %}player/{{ player.5.nickname }}`)">
                 <img src="../static/images/player/head/{{player.5.nickname}}.webp" style="width: 40px;">
                 <div style="text-align: left;">6.{{player.5.nickname}}</div>
                 <div style="position: relative;">{{player.5.rating}}</div>
             </div>
-            <div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect('{% url 'home' %}player/{{ player.6.nickname }}')">
+            <div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect(`{% url 'home' %}player/{{ player.6.nickname }}`)">
                 <img src="../static/images/player/head/{{player.6.nickname}}.webp" style="width: 40px;">
                 <div style="text-align: left;">7.{{player.6.nickname}}</div>
                 <div style="position: relative;">{{player.6.rating}}</div>
             </div>
-            <div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect('{% url 'home' %}player/{{ player.7.nickname }}')">
+            <div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect(`{% url 'home' %}player/{{ player.7.nickname }}`)">
                 <img src="../static/images/player/head/{{player.7.nickname}}.webp" style="width: 40px;">
                 <div style="text-align: left;">8.{{player.7.nickname}}</div>
                 <div style="position: relative;">{{player.7.rating}}</div>
             </div>
-            <div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect('{% url 'home' %}player/{{ player.8.nickname }}')">
+            <div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect(`{% url 'home' %}player/{{ player.8.nickname }}`)">
                 <img src="../static/images/player/head/{{player.8.nickname}}.webp" style="width: 40px;">
                 <div style="text-align: left;">9.{{player.8.nickname}}</div>
                 <div style="position: relative;">{{player.8.rating}}</div>
             </div>
-            <div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect('{% url 'home' %}player/{{ player.9.nickname }}')">
+            <div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect(`{% url 'home' %}player/{{ player.9.nickname }}`)">
                 <img src="../static/images/player/head/{{player.9.nickname}}.webp" style="width: 40px;">
                 <div style="text-align: left;">10.{{player.9.nickname}}</div>
                 <div style="position: relative;">{{player.9.rating}}</div>
             </div>
             <!-- Add more ranking items as needed -->
-            <a href="player_ranking" id="full_player_rankings" class="show_full_rank">查看完整排行</a>
+            <div class="w-full mt-2 mb-4 flex items-center justify-center">
+                <a href="{% url 'player_ranking' %}"
+                    class="bg-gray-800 text-white font-semibold py-2 px-4 text-sm rounded transition duration-300 ease-in-out hover:bg-orange-600 no-underline "
+                    style="text-decoration: none;">
+                    查看完整排行
+                </a>
+            </div>
+
         </div>
 
         <div class="choose_block flex_center_box half_box w-full md:w-1/2">
@@ -461,60 +482,69 @@
             <div class="ranking_title">
                 <div style="text-align: left;">HLTV积分</div>
             </div>
-            <div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect('{% url 'home' %}team/{{ team.0.name }}')">
+            <div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect(`{% url 'home' %}team/{{ team.0.name }}`)">
                 <img id="team1" src="../static/images/{{team.0.name}}.svg" style="width: 40px;">
                 <div style="text-align: left;">1.{{team.0.name}}</div>
             </div>
-            <div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect('{% url 'home' %}team/{{ team.1.name }}')">
+            <div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect(`{% url 'home' %}team/{{ team.1.name }}`)">
                 <img id="team2" src="../static/images/{{team.1.name}}.svg" style="width: 40px;">
                 <div style="text-align: left;">2.{{team.1.name}}</div>
             </div>
-            <div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect('{% url 'home' %}team/{{ team.2.name }}')">
+            <div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect(`{% url 'home' %}team/{{ team.2.name }}`)">
                 <img id="team3" src="../static/images/{{team.2.name}}.svg" style="width: 40px;">
                 <div style="text-align: left;">3.{{team.2.name}}</div>
             </div>
-            <div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect('{% url 'home' %}team/{{ team.3.name }}')">
+            <div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect(`{% url 'home' %}team/{{ team.3.name }}`)">
                 <img id="team4" src="../static/images/{{team.3.name}}.svg" style="width: 40px;">
                 <div style="text-align: left;">4.{{team.3.name}}</div>
             </div>
-            <div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect('{% url 'home' %}team/{{ team.4.name }}')">
+            <div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect(`{% url 'home' %}team/{{ team.4.name }}`)">
                 <img id="team5" src="../static/images/{{team.4.name}}.svg" style="width: 40px;">
                 <div style="text-align: left;">5.{{team.4.name}}</div>
             </div>
-            <div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect('{% url 'home' %}team/{{ team.5.name }}')">
+            <div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect(`{% url 'home' %}team/{{ team.5.name }}`)">
                 <img id="team6" src="../static/images/{{team.5.name}}.svg" style="width: 40px;">
                 <div style="text-align: left;">6.{{team.5.name}}</div>
             </div>
-            <div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect('{% url 'home' %}team/{{ team.6.name }}')">
+            <div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect(`{% url 'home' %}team/{{ team.6.name }}`)">
                 <img id="team7" src="../static/images/{{team.6.name}}.svg" style="width: 40px;">
                 <div style="text-align: left;">7.{{team.6.name}}</div>
             </div>
-            <div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect('{% url 'home' %}team/{{ team.7.name }}')">
+            <div class="ranking_item flex items-center justify-between cursor-pointer" onclick="redirect(`{% url 'home' %}team/{{ team.7.name }}`)">
                 <img id="team8" src="../static/images/{{team.7.name}}.svg" style="width: 40px;">
                 <div style="text-align: left;">8.{{team.7.name}}</div>
             </div>
             <!-- Add more ranking items as needed -->
-            <a href="team_ranking" id="full_team_rankings" class="show_full_rank">查看完整排行</a>
+            <div class="w-full mt-2 mb-4 flex items-center justify-center">
+                <a href="{% url 'team_ranking' %}"
+                    class="bg-gray-800 text-white font-semibold py-2 px-4 text-sm rounded transition duration-300 ease-in-out hover:bg-orange-600 no-underline "
+                    style="text-decoration: none;">
+                    查看完整排行
+                </a>
+            </div>
+
+
+
         </div>
     </div>
     <script src="{% static 'js/player_team_mainpage.js' %}" type="text/javascript"></script>
     <script src="{% static 'js/team_rank.js' %}" type="text/javascript"></script>
     <script type="text/javascript">
-    document.addEventListener("DOMContentLoaded", function () {
-            
-            var team = {{ teamx | safe }};
-            console.log(team[0].fields.name)
-            loadImage('team1', '../static/images/'+team[0].fields.name+'.webp', '../static/images/'+team[0].fields.name+'.svg');
-            loadImage('team2', '../static/images/'+team[1].fields.name+'.webp', '../static/images/'+team[1].fields.name+'.svg');
-            loadImage('team3', '../static/images/'+team[2].fields.name+'.webp', '../static/images/'+team[2].fields.name+'.svg');
-            loadImage('team4', '../static/images/'+team[3].fields.name+'.webp', '../static/images/'+team[3].fields.name+'.svg');
-            loadImage('team5', '../static/images/'+team[4].fields.name+'.webp', '../static/images/'+team[4].fields.name+'.svg');
-            loadImage('team6', '../static/images/'+team[5].fields.name+'.webp', '../static/images/'+team[5].fields.name+'.svg');
-            loadImage('team7', '../static/images/'+team[6].fields.name+'.webp', '../static/images/'+team[6].fields.name+'.svg');
-            loadImage('team8', '../static/images/'+team[7].fields.name+'.webp', '../static/images/'+team[7].fields.name+'.svg');
+        document.addEventListener("DOMContentLoaded", function () {
+            // 将 teamx 转换为 JSON 字符串，然后解析为 JavaScript 对象
+            var team = JSON.parse('{{ teamx|escapejs }}');
+            console.log(team[0].fields.name);
+            loadImage('team1', '../static/images/' + team[0].fields.name + '.webp', '../static/images/' + team[0].fields.name + '.svg');
+            loadImage('team2', '../static/images/' + team[1].fields.name + '.webp', '../static/images/' + team[1].fields.name + '.svg');
+            loadImage('team3', '../static/images/' + team[2].fields.name + '.webp', '../static/images/' + team[2].fields.name + '.svg');
+            loadImage('team4', '../static/images/' + team[3].fields.name + '.webp', '../static/images/' + team[3].fields.name + '.svg');
+            loadImage('team5', '../static/images/' + team[4].fields.name + '.webp', '../static/images/' + team[4].fields.name + '.svg');
+            loadImage('team6', '../static/images/' + team[5].fields.name + '.webp', '../static/images/' + team[5].fields.name + '.svg');
+            loadImage('team7', '../static/images/' + team[6].fields.name + '.webp', '../static/images/' + team[6].fields.name + '.svg');
+            loadImage('team8', '../static/images/' + team[7].fields.name + '.webp', '../static/images/' + team[7].fields.name + '.svg');
         });
     </script>
-
+    
 
     <div id="bottom_block" class="block flex_center_box_v">
         <p>人机交互小组</p>
