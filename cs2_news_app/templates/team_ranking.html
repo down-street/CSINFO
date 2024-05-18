@@ -102,21 +102,24 @@
     <script src="{% static 'js/team_rank.js' %}" type="text/javascript"></script>
     <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", function () {
-            
-            var team = {{ teamx | safe }};
-            console.log(team[0].fields.name)
-            loadImage('team1', '../static/images/'+team[0].fields.name+'.webp', '../static/images/'+team[0].fields.name+'.svg');
-            loadImage('team2', '../static/images/'+team[1].fields.name+'.webp', '../static/images/'+team[1].fields.name+'.svg');
-            loadImage('team3', '../static/images/'+team[2].fields.name+'.webp', '../static/images/'+team[2].fields.name+'.svg');
-            loadImage('team4', '../static/images/'+team[3].fields.name+'.webp', '../static/images/'+team[3].fields.name+'.svg');
-            loadImage('team5', '../static/images/'+team[4].fields.name+'.webp', '../static/images/'+team[4].fields.name+'.svg');
-            loadImage('team6', '../static/images/'+team[5].fields.name+'.webp', '../static/images/'+team[5].fields.name+'.svg');
-            loadImage('team7', '../static/images/'+team[6].fields.name+'.webp', '../static/images/'+team[6].fields.name+'.svg');
-            loadImage('team8', '../static/images/'+team[7].fields.name+'.webp', '../static/images/'+team[7].fields.name+'.svg');
-            loadImage('team9', '../static/images/'+team[8].fields.name+'.webp', '../static/images/'+team[8].fields.name+'.svg');
-            loadImage('team10', '../static/images/'+team[9].fields.name+'.webp', '../static/images/'+team[9].fields.name+'.svg');
-        });
+        var team = JSON.parse('{{ teamx|safe }}');
+        console.log(team[0].fields.name);
+        loadImage('team1', '../static/images/' + team[0].fields.name + '.webp', '../static/images/' + team[0].fields.name + '.svg');
+        loadImage('team2', '../static/images/' + team[1].fields.name + '.webp', '../static/images/' + team[1].fields.name + '.svg');
+        loadImage('team3', '../static/images/' + team[2].fields.name + '.webp', '../static/images/' + team[2].fields.name + '.svg');
+        loadImage('team4', '../static/images/' + team[3].fields.name + '.webp', '../static/images/' + team[3].fields.name + '.svg');
+        loadImage('team5', '../static/images/' + team[4].fields.name + '.webp', '../static/images/' + team[4].fields.name + '.svg');
+        loadImage('team6', '../static/images/' + team[5].fields.name + '.webp', '../static/images/' + team[5].fields.name + '.svg');
+        loadImage('team7', '../static/images/' + team[6].fields.name + '.webp', '../static/images/' + team[6].fields.name + '.svg');
+        loadImage('team8', '../static/images/' + team[7].fields.name + '.webp', '../static/images/' + team[7].fields.name + '.svg');
+        loadImage('team9', '../static/images/' + team[8].fields.name + '.webp', '../static/images/' + team[8].fields.name + '.svg');
+        loadImage('team10', '../static/images/' + team[9].fields.name + '.webp', '../static/images/' + team[9].fields.name + '.svg');
+    });
     </script>
+
+
+
+
     <script src="{% static 'js/player_team_mainpage.js' %}" type="text/javascript"></script>
     <div class="container mx-auto px-4 py-8">
         <div class="grid grid-cols-8 gap-8">
@@ -132,7 +135,7 @@
                                 <div class="team-logo">
                                     <img id='team1' alt="FaZe" class="w-8 h-8">
                                 </div>
-                                <div class="team-name text-lg font-bold" onclick="redirect('{% url 'home' %}team/{{ team.0.name }}')">{{team.0.name}}</div>
+                                <div class="team-name text-lg font-bold" onclick="redirect(`{% url 'home' %}team/{{ team.0.name }}`)">{{team.0.name}}</div>
                             </div>
                             <div class="right">
                                 <div class="team-points text-sm font-semibold">982 points</div>
@@ -142,35 +145,35 @@
                             <div class="player text-center">
                                 <img src="../static/images/player/head/{{players.0.0.nickname}}.webp"
                                     class="w-8 h-8 rounded-full mx-auto">
-                                <h3 class="mt-1" onclick="redirect('{% url 'home' %}player/{{ players.0.0.nickname }}')">{{players.0.0.nickname}}</h5>
+                                <h3 class="mt-1" onclick="redirect(`{% url 'home' %}player/{{ players.0.0.nickname }}`)">{{players.0.0.nickname}}</h5>
                                     <img src="../static/images/flags/{{players.0.0.nationality}}.png"
                                         class="w-4 h-4 mx-auto" style="border-radius: 0;margin-top:5px">
                             </div>
                             <div class="player text-center">
                                 <img src="../static/images/player/head/{{players.0.1.nickname}}.webp"
                                     class="w-8 h-8 rounded-full mx-auto">
-                                <h3 class="mt-1" onclick="redirect('{% url 'home' %}player/{{ players.0.1.nickname }}')">{{players.0.1.nickname}}</h5>
+                                <h3 class="mt-1" onclick="redirect(`{% url 'home' %}player/{{ players.0.1.nickname }}`)">{{players.0.1.nickname}}</h5>
                                     <img src="../static/images/flags/{{players.0.1.nationality}}.png"
                                         class="w-4 h-4 mx-auto" style="border-radius: 0;margin-top:5px">
                             </div>
                             <div class="player text-center">
                                 <img src="../static/images/player/head/{{players.0.2.nickname}}.webp"
                                     class="w-8 h-8 rounded-full mx-auto">
-                                <h3 class="mt-1" onclick="redirect('{% url 'home' %}player/{{ players.0.2.nickname }}')">{{players.0.2.nickname}}</h5>
+                                <h3 class="mt-1" onclick="redirect(`{% url 'home' %}player/{{ players.0.2.nickname }}`)">{{players.0.2.nickname}}</h5>
                                     <img src="../static/images/flags/{{players.0.2.nationality}}.png"
                                         class="w-4 h-4 mx-auto" style="border-radius: 0;margin-top:5px">
                             </div>
                             <div class="player text-center">
                                 <img src="../static/images/player/head/{{players.0.3.nickname}}.webp"
                                     class="w-8 h-8 rounded-full mx-auto">
-                                <h3 class="mt-1" onclick="redirect('{% url 'home' %}player/{{ players.0.3.nickname }}')">{{players.0.3.nickname}}</h5>
+                                <h3 class="mt-1" onclick="redirect(`{% url 'home' %}player/{{ players.0.3.nickname }}`)">{{players.0.3.nickname}}</h5>
                                     <img src="../static/images/flags/{{players.0.3.nationality}}.png"
                                         class="w-4 h-4 mx-auto" style="border-radius: 0;margin-top:5px">
                             </div>
                             <div class="player text-center">
                                 <img src="../static/images/player/head/{{players.0.4.nickname}}.webp"
                                     class="w-8 h-8 rounded-full mx-auto">
-                                <h3 class="mt-1" onclick="redirect('{% url 'home' %}player/{{ players.0.4.nickname }}')">{{players.0.4.nickname}}</h5>
+                                <h3 class="mt-1" onclick="redirect(`{% url 'home' %}player/{{ players.0.4.nickname }}`)">{{players.0.4.nickname}}</h5>
                                     <img src="../static/images/flags/{{players.0.4.nationality}}.png"
                                         class="w-4 h-4 mx-auto" style="border-radius: 0;margin-top:5px">
                             </div>
@@ -183,7 +186,7 @@
                                 <div class="team-logo">
                                     <img id="team2" alt="FaZe" class="w-8 h-8">
                                 </div>
-                                <div class="team-name text-lg font-bold" onclick="redirect('{% url 'home' %}team/{{ team.1.name }}')">{{team.1.name}}</div>
+                                <div class="team-name text-lg font-bold" onclick="redirect(`{% url 'home' %}team/{{ team.1.name }}`)">{{team.1.name}}</div>
                             </div>
                             <div class="right">
                                 <div class="team-points text-sm font-semibold">982 points</div>
@@ -193,35 +196,35 @@
                             <div class="player text-center">
                                 <img src="../static/images/player/head/{{players.1.0.nickname}}.webp"
                                     class="w-8 h-8 rounded-full mx-auto">
-                                <h3 class="mt-1" onclick="redirect('{% url 'home' %}player/{{ players.1.0.nickname }}')">{{players.1.0.nickname}}</h5>
+                                <h3 class="mt-1" onclick="redirect(`{% url 'home' %}player/{{ players.1.0.nickname }}`)">{{players.1.0.nickname}}</h5>
                                     <img src="../static/images/flags/{{players.1.0.nationality}}.png"
                                         class="w-4 h-4 mx-auto" style="border-radius: 0;margin-top:5px">
                             </div>
                             <div class="player text-center">
                                 <img src="../static/images/player/head/{{players.1.1.nickname}}.webp"
                                     class="w-8 h-8 rounded-full mx-auto">
-                                <h3 class="mt-1"onclick="redirect('{% url 'home' %}player/{{ players.1.1.nickname }}')">{{players.1.1.nickname}}</h5>
+                                <h3 class="mt-1"onclick="redirect(`{% url 'home' %}player/{{ players.1.1.nickname }}`)">{{players.1.1.nickname}}</h5>
                                     <img src="../static/images/flags/{{players.1.1.nationality}}.png"
                                         class="w-4 h-4 mx-auto" style="border-radius: 0;margin-top:5px">
                             </div>
                             <div class="player text-center">
                                 <img src="../static/images/player/head/{{players.1.2.nickname}}.webp"
                                     class="w-8 h-8 rounded-full mx-auto">
-                                <h3 class="mt-1"onclick="redirect('{% url 'home' %}player/{{ players.1.2.nickname }}')">{{players.1.2.nickname}}</h5>
+                                <h3 class="mt-1"onclick="redirect(`{% url 'home' %}player/{{ players.1.2.nickname }}`)">{{players.1.2.nickname}}</h5>
                                     <img src="../static/images/flags/{{players.1.2.nationality}}.png"
                                         class="w-4 h-4 mx-auto" style="border-radius: 0;margin-top:5px">
                             </div>
                             <div class="player text-center">
                                 <img src="../static/images/player/head/{{players.1.3.nickname}}.webp"
                                     class="w-8 h-8 rounded-full mx-auto">
-                                <h3 class="mt-1"onclick="redirect('{% url 'home' %}player/{{ players.1.3.nickname }}')">{{players.1.3.nickname}}</h5>
+                                <h3 class="mt-1"onclick="redirect(`{% url 'home' %}player/{{ players.1.3.nickname }}`)">{{players.1.3.nickname}}</h5>
                                     <img src="../static/images/flags/{{players.1.3.nationality}}.png"
                                         class="w-4 h-4 mx-auto" style="border-radius: 0;margin-top:5px">
                             </div>
                             <div class="player text-center">
                                 <img src="../static/images/player/head/{{players.1.4.nickname}}.webp"
                                     class="w-8 h-8 rounded-full mx-auto">
-                                <h3 class="mt-1"onclick="redirect('{% url 'home' %}player/{{ players.1.4.nickname }}')">{{players.1.4.nickname}}</h5>
+                                <h3 class="mt-1"onclick="redirect(`{% url 'home' %}player/{{ players.1.4.nickname }}`)">{{players.1.4.nickname}}</h5>
                                     <img src="../static/images/flags/{{players.1.4.nationality}}.png"
                                         class="w-4 h-4 mx-auto" style="border-radius: 0;margin-top:5px">
                             </div>
@@ -234,7 +237,7 @@
                                 <div class="team-logo">
                                     <img id="team3" alt="FaZe" class="w-8 h-8">
                                 </div>
-                                <div class="team-name text-lg font-bold" onclick="redirect('{% url 'home' %}team/{{ team.2.name }}')">{{team.2.name}}</div>
+                                <div class="team-name text-lg font-bold" onclick="redirect(`{% url 'home' %}team/{{ team.2.name }}`)">{{team.2.name}}</div>
                             </div>
                             <div class="right">
                                 <div class="team-points text-sm font-semibold">982 points</div>
@@ -244,35 +247,35 @@
                             <div class="player text-center">
                                 <img src="../static/images/player/head/{{players.2.0.nickname}}.webp"
                                     class="w-8 h-8 rounded-full mx-auto">
-                                <h3 class="mt-1"onclick="redirect('{% url 'home' %}player/{{ players.2.0.nickname }}')">{{players.2.0.nickname}}</h5>
+                                <h3 class="mt-1"onclick="redirect(`{% url 'home' %}player/{{ players.2.0.nickname }}`)">{{players.2.0.nickname}}</h5>
                                     <img src="../static/images/flags/{{players.2.0.nationality}}.png"
                                         class="w-4 h-4 mx-auto" style="border-radius: 0;margin-top:5px">
                             </div>
                             <div class="player text-center">
                                 <img src="../static/images/player/head/{{players.2.1.nickname}}.webp"
                                     class="w-8 h-8 rounded-full mx-auto">
-                                <h3 class="mt-1"onclick="redirect('{% url 'home' %}player/{{ players.2.1.nickname }}')">{{players.2.1.nickname}}</h5>
+                                <h3 class="mt-1"onclick="redirect(`{% url 'home' %}player/{{ players.2.1.nickname }}`)">{{players.2.1.nickname}}</h5>
                                     <img src="../static/images/flags/{{players.2.1.nationality}}.png"
                                         class="w-4 h-4 mx-auto" style="border-radius: 0;margin-top:5px">
                             </div>
                             <div class="player text-center">
                                 <img src="../static/images/player/head/{{players.0.2.nickname}}.webp"
                                     class="w-8 h-8 rounded-full mx-auto">
-                                <h3 class="mt-1"onclick="redirect('{% url 'home' %}player/{{ players.2.2.nickname }}')">{{players.2.2.nickname}}</h5>
+                                <h3 class="mt-1"onclick="redirect(`{% url 'home' %}player/{{ players.2.2.nickname }}`)">{{players.2.2.nickname}}</h5>
                                     <img src="../static/images/flags/{{players.2.2.nationality}}.png"
                                         class="w-4 h-4 mx-auto" style="border-radius: 0;margin-top:5px">
                             </div>
                             <div class="player text-center">
                                 <img src="../static/images/player/head/{{players.2.3.nickname}}.webp"
                                     class="w-8 h-8 rounded-full mx-auto">
-                                <h3 class="mt-1"onclick="redirect('{% url 'home' %}player/{{ players.2.3.nickname }}')">{{players.2.3.nickname}}</h5>
+                                <h3 class="mt-1"onclick="redirect(`{% url 'home' %}player/{{ players.2.3.nickname }}`)">{{players.2.3.nickname}}</h5>
                                     <img src="../static/images/flags/{{players.2.3.nationality}}.png"
                                         class="w-4 h-4 mx-auto" style="border-radius: 0;margin-top:5px">
                             </div>
                             <div class="player text-center">
                                 <img src="../static/images/player/head/{{players.2.4.nickname}}.webp"
                                     class="w-8 h-8 rounded-full mx-auto">
-                                <h3 class="mt-1"onclick="redirect('{% url 'home' %}player/{{ players.2.4.nickname }}')">{{players.2.4.nickname}}</h5>
+                                <h3 class="mt-1"onclick="redirect(`{% url 'home' %}player/{{ players.2.4.nickname }}`)">{{players.2.4.nickname}}</h5>
                                     <img src="../static/images/flags/{{players.2.4.nationality}}.png"
                                         class="w-4 h-4 mx-auto" style="border-radius: 0;margin-top:5px">
                             </div>
@@ -286,7 +289,7 @@
                                 <div class="team-logo">
                                     <img id="team{{ forloop.counter0|add:4}}" alt="FaZe" class="w-8 h-8">
                                 </div>
-                                <div class="team-name text-lg font-bold" onclick="redirect('{% url 'home' %}team/{{ tm.name }}')">{{tm.name}}</div>
+                                <div class="team-name text-lg font-bold" onclick="redirect(`{% url 'home' %}team/{{ tm.name }}`)">{{tm.name}}</div>
                             </div>
                             <div class="right">
                                 <div class="team-points text-sm font-semibold">100 points</div>
