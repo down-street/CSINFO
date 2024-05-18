@@ -55,7 +55,11 @@
                 <div class="text-md">{{ match.team2.name }}</div>
                 <img src="{{ match.team2.images.first.image.url }}" class="h-8 w-8 rounded-full">
             </div>
-            <button class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 transition-colors video-play" data-video-url="{{ match.link }}">视频回放</button>
+            <button class="video-play" data-video-url="{{ match.link }}">
+                视频回放
+            </button>
+            
+
         </div>
         {% endfor %}
     </div>
