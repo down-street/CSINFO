@@ -6,6 +6,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
 from .models import News, Match,Team,Player
 from django.core import serializers
+from django.db.models import Q
 def index(request):
     news_ids = range(1, 7)  # Adjust numbers as necessary
     news_items = News.objects.filter(id__in=news_ids)
@@ -115,13 +116,15 @@ def team_detail(request, team_name):
     news_2 = News.objects.filter(id=2).first()
     news_3 = News.objects.filter(id=3).first()
     news_4 = News.objects.filter(id=4).first()
+    matches = Match.objects.filter(Q(team1__name=team_name) | Q(team2__name=team_name))
     return render(request, 'team_detail.html', {
         'news_1': news_1,
         'news_2': news_2,
         'news_3': news_3,
         'news_4': news_4,
         'team': team,
-        'players':players
+        'players':players,
+        'matches':matches
     })
 
 def player_detail(request, nickname):
@@ -131,7 +134,6 @@ def player_detail(request, nickname):
         player.ranking = index + 1  # Rankings start from 1
         player.save()
     player = get_object_or_404(Player, nickname=nickname)
-    print(player.team.name)
     team=get_object_or_404(Team, name=player.team.name)
     news_1 = News.objects.filter(id=1).first()
     news_2 = News.objects.filter(id=2).first()
