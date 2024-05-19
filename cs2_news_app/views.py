@@ -7,6 +7,7 @@ from django.shortcuts import render
 from .models import News, Match,Team,Player
 from django.core import serializers
 from django.db.models import Q
+import re
 def index(request):
     news_ids = range(1, 7)  # Adjust numbers as necessary
     news_items = News.objects.filter(id__in=news_ids)
@@ -68,6 +69,27 @@ def all_news(request):
 
     return render(request, 'all_news.html', {'all_news': all_news, 'dates': dates})
 
+def escape_control_characters(json_string):
+    # 定义一个替换函数，将非法字符替换为合法的转义字符
+    def replace_match(match):
+        char = match.group(0)
+        # 转义特定控制字符
+        if char == '\b':
+            return '\\b'
+        elif char == '\f':
+            return '\\f'
+        elif char == '\n':
+            return '\\n'
+        elif char == '\r':
+            return '\\r'
+        elif char == '\t':
+            return '\\t'
+        else:
+            # 使用 Unicode 转义序列
+            return '\\u{0:04x}'.format(ord(char))
+    
+    # 匹配所有控制字符
+    return re.sub(r'[\x00-\x1F\x7F]', replace_match, json_string)
 
 def team_ranking(request):
     news_1 = News.objects.filter(id=1).first()
@@ -87,6 +109,12 @@ def team_ranking(request):
                 
         ret_players.append(team_players)
     team_s=serializers.serialize('json',team)
+    team_s= escape_control_characters(team_s)
+    try:
+        team_data = json.loads(team_s)
+        print("Parsed JSON data:", team_data)
+    except json.JSONDecodeError as e:
+        print("JSON decode error:", e)
     return render(request, 'team_ranking.html', { 'news_1': news_1,'news_2': news_2,'news_3': news_3,'news_4': news_4,'players':ret_players,'team':team,'teamlft':teamc,'teamx':team_s})
 
 def player_ranking(request):
